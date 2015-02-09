@@ -1,1 +1,1 @@
-int main(){printf("rgvr is great\n");}
+int main(){printf("why\n");}
