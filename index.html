@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Perfect Presenter v1.0</title>
+		<script type="text/javascript" src="./lib/beautify.js"></script>
+		<script type="text/javascript" src="./lib/filereader.js"></script>
+		<script type="text/javascript" src="./lib/jquery-2.1.3.js"></script>
+		<script type="text/javascript" src="./lib/sh_main.js"></script>
+		<script type="text/javascript" src="./lib/sh_c.js"></script>
+		<link id='code_style' type="text/css" rel="stylesheet" href="./style/sh_acid.css">
+		<link type="text/css" rel="stylesheet" href="./style/mystyle.css">
+		<link type="text/css" rel="stylesheet" href="./style/foundation.css">
+		<script type="text/javascript" src="./lib/bootstrap.js"></script>
+	</head>
+	<h1 align="center" class="heading_style">Perfect Presenter</h1>
+	<body onload="sh_highlightDocument();">
+
+	<div class="div_style">
+	<div >
+	<select id="themeSelect" onchange="return loadStyle();" style="
+	margin-right: 10%;
+	float:right;
+	width: 20%;">
+<option>sh_berries-dark</option>
+<option selected>sh_acid</option>
+<option>sh_bipolar</option>
+<option>sh_darkblue</option>
+</select>
+
+<Lable style="
+	margin-left: 10%;
+	width:60%">Select an input file:</Lable>
+<input type="file" id="fileInput" style="
+	margin-left: 10%;
+	width:60%">
+</div>
+	<div>
+		<pre class="sh_c" id='indented_code'>hello</pre>
+	</div>
+	</div>
+	<script type="text/javascript">
+
+fileInput.addEventListener('change', function(e) {
+			var file = fileInput.files[0];
+var reader = new FileReader();
+
+				reader.onload = function(e) {
+					$('#indented_code').html(js_beautify(reader.result, { indent_size: 4 }));
+					sh_highlightDocument();
+				}
+
+				reader.readAsText(file);	
+
+});
+
+		function loadStyle() {
+			var value = $('#themeSelect').find(":selected").text();
+			$('#code_style').attr("href", "./style/"+value+".css");
+		}
+		$('#code_style').attr("href", "./style/sh_acid.css");
+		
+	</script>
+	
+	</body>
+</html>
