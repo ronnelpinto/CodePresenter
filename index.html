@@ -116,21 +116,21 @@
         
         function apply_new_theme(extension) {
             var theme = $('#theme_select').find(":selected").text();
-	    	//Highligh the syntax based on the extension
-	    	if(extension == "c")
-	    	{
-				$('#indented_code').snippet("c",{style:theme,menu:false});
-			}
-			else if(extension == "java")
-			{
-				 $('#indented_code').snippet("java",{style:theme,menu:false});
-			}
-		}
+	    //Highligh the syntax based on the extension
+	    if(extension == "c")
+	    {
+		$('#indented_code').snippet("c",{style:theme,menu:false});
+	    }
+	    else if(extension == "java")
+	    {
+		$('#indented_code').snippet("java",{style:theme,menu:false});
+	    }
+	}
         
         function read_file() {
-			var file = file_input.files[0];
-			var filename = file["name"];
-			// Fetch the file extension
+	    var file = file_input.files[0];
+	    var filename = file["name"];
+	    // Fetch the file extension
             var fileExtension = filename.replace(/^.*\./,"");
             var reader = new FileReader();
             reader.onload = function(e) {
