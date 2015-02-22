@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <title>Code Presenter Settings</title>
+  <script type="text/javascript" src="./lib/jquery-2.1.3.js"></script>
+  
+  <link rel="stylesheet" type="text/css" media="all" href="css/styles.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/switchery.min.css">
+  <script type="text/javascript" src="js/switchery.min.js"></script>
+  <script type="text/javascript" src="./js/config.js"></script>
+  <script type="text/javascript" src="./js/file.js"></script>
+</head>
+
+<body>
+  <div id="wrapper">
+  
+  <h1>Custom Settings</h1>
+  
+  <form id="form">
+   <div class="col-3">
+    <label>
+      Indent Size
+      <input placeholder="What indent size you prefer?" id="indent_size" name="indent_size" tabindex="3">
+    </label>
+  </div>
+ <div class="col-3">
+    <label>
+      Indent Character
+      <select tabindex="5" name="indent_char">
+        <option value=" ">Use space for indentation</option>
+        <option value='tab'>Use tab for indentation</option>
+        <option value='new'>Use new line for indentation</option>
+      </select>
+    </label>
+  </div>
+  <!-- <div class="col-4">
+    <label>Indent with tabs??</label>
+    <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="indent_tabs"></center>
+  </div>
+  <div class="col-4">
+    <label>Preserve newlines??</label>
+    <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="preserve_newlines"></center>
+  </div> -->
+  <div class="col-3">
+    <label>Space before Conditional??</label>
+    <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="space_before_conditional"></center>
+  </div>
+ <!--  <div class="col-2">
+    <label>
+      Braces on own line??
+      <input placeholder="What is the maximum number of newlines between tokens you prefer?" id="max_newlines" name="max_newlines" tabindex="6">
+    </label>
+  </div> -->
+  
+  <div class="col-2 switch">
+    <label>Braces on own line??</label>
+    <center style="position:relative;margin-bottom:5px;"><input type="checkbox" class="js-switch" name="braces_on_own_line"></center>
+  </div>
+  <!-- <div class="col-3">
+    <label>
+      Characters limit per line 
+      <input placeholder="Maximum number of characters in each line?" id="char_per_line" name="char_per_line" tabindex="6">
+    </label>
+  </div> -->
+  <!--  <div class="col-3">
+    <label>Space between fucntion parameters??</label>
+    <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="space_between_params"></center>
+  </div> -->
+ 
+    <div class="col-2">
+    <label>Space before function parameters??</label>
+    <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="space_after_anon_function"></center> </div>
+  <!-- </div>
+  <div class="col-4">
+    <label>Keep array indentation??</label>
+    <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="array_indent"></center>
+  </div>
+  <div class="col-4">
+    <label>
+      Braces Style
+      <select tabindex="5" name="brace_style">
+        <option value="original">Keep braces where they are</option>
+        <option value="own_line">Braces on own line</option>
+        <option value="new_line">Braces on new line</option>
+      </select>
+    </label>
+  </div>
+ 
+   <div class="col-4">
+    <label>
+      Comments Style
+      <select tabindex="5" name="comment_style">
+        <option value="original">Keep comments how they are</option>
+        <option value="own_line">Comments on own line</option>
+        <option value="new_line">Comments on new line</option>
+      </select>
+    </label>
+  </div>
+  
+ <div class="col-4">
+    <label>Break chained methods??</label>
+    <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="chain_methods"></center>
+  </div>
+   -->
+  
+  
+  
+  <div class="col-submit">
+    <button class="submitbtn" id="submit">Submit Settings</button>
+  </div>
+  
+  </form>
+  </div>
+<script type="text/javascript">
+var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+elems.forEach(function(html) {
+  var switchery = new Switchery(html);
+});
+
+$('#submit').click(function(e){
+e.preventDefault();
+
+save_config();
+var obj = get_config();
+//alert(obj)
+window.location.href = "newindex.html";
+
+//read_file()
+});
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

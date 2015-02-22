@@ -128,6 +128,7 @@ button.submitbtn:active {
         var initDocument;
         
         function init() {
+          alert("Please select the file to apply new settings")
             $('#file_input').change(read_file);
             $('#theme_select').change(apply_theme);
             $("#prev-style").click(function(){
@@ -173,21 +174,27 @@ button.submitbtn:active {
 		$('#indented_code').snippet("java",{style:theme,menu:false});
 	    }
 	}
+  function print(){
+     alert("Please select the file to apply new settings")
+  }
         
         function read_file() {
+
 	    var file = file_input.files[0];
-      
 	    var filename = file["name"];
 	    // Fetch the file extension
-      
             var fileExtension = filename.replace(/^.*\./,"");
             var reader = new FileReader();
             reader.onload = function(e) {
                 $('#code_div').html("<pre id='indented_code'></pre>");
-                $('#indented_code').html(js_beautify(reader.result, { "indent_size": "6", "indent_char":'\t', "space_before_conditional":"true", "braces_on_own_line":"true", "space_after_anon_function":"false" }));
+
+                var obj = get_config();
+                obj = JSON.parse(obj);
+                alert(JSON.stringify(obj));
+                $('#indented_code').html(js_beautify(reader.result, obj));
                 apply_new_theme(fileExtension);
             }
-           reader.readAsText(file);
+            reader.readAsText(file);
         }
 
         $('#settings').click(function(){
