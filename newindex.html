@@ -3,7 +3,9 @@
 	<head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Perfect Presenter</title>
-		<script type="text/javascript" src="parser.js"></script>
+		<script type="text/javascript" src="./lib/c_parser.js"></script>
+        <script type="text/javascript" src="./lib/java_parser.js"></script>
+        <script type="text/javascript" src="./lib/python_parser.js"></script>
 		<script type="text/javascript" src="./lib/jquery-2.1.3.js"></script>
         <script type="text/javascript" src="./lib/jquery.snippet.js"></script>
         <link type="text/css" rel="stylesheet" href="./style/jquery.snippet.css">
@@ -173,7 +175,31 @@ button.submitbtn:active {
 	    {
 		$('#indented_code').snippet("java",{style:theme,menu:false});
 	    }
+        else if(extension == "py")
+	    {
+		$('#indented_code').snippet("python",{style:theme,menu:false});
+	    }
 	}
+        
+        
+        //Call the parser based on the extension
+        function call_parser(extension, obj, reader){
+            if(extension == "c")
+            {
+               $('#indented_code').html(c_beautify(reader.result, obj));
+            }
+            else if(extension == "java")
+            {
+                $('#indented_code').html(java_beautify(reader.result, obj));
+            }
+            else if(extension == "py")
+            {
+                $('#indented_code').html(python_beautify(reader.result, obj));
+            }
+        
+        }
+        
+        
   function print(){
      alert("Please select the file to apply new settings")
   }
@@ -191,7 +217,7 @@ button.submitbtn:active {
                 var obj = get_config();
                 obj = JSON.parse(obj);
                 alert(JSON.stringify(obj));
-                $('#indented_code').html(js_beautify(reader.result, obj));
+                call_parser(fileExtension, obj, reader);
                 apply_new_theme(fileExtension);
             }
             reader.readAsText(file);

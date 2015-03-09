@@ -3,7 +3,9 @@
 	<head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Perfect Presenter</title>
-		<script type="text/javascript" src="parser.js"></script>
+		<script type="text/javascript" src="./lib/c_parser.js"></script>
+        <script type="text/javascript" src="./lib/java_parser.js"></script>
+        <script type="text/javascript" src="./lib/python_parser.js"></script>
 		<script type="text/javascript" src="./lib/jquery-2.1.3.js"></script>
         <script type="text/javascript" src="./lib/jquery.snippet.js"></script>
         <link type="text/css" rel="stylesheet" href="./style/jquery.snippet.css">
@@ -172,7 +174,29 @@ button.submitbtn:active {
 	    {
 		$('#indented_code').snippet("java",{style:theme,menu:false});
 	    }
+        else if(extension == "py")
+	    {
+		$('#indented_code').snippet("python",{style:theme,menu:false});
+	    }
 	}
+        
+        //Call the parser based on the extension
+        function call_parser(extension, reader){
+            if(extension == "c")
+            {
+               $('#indented_code').html(c_beautify(reader.result, { "indent_size": "6", "indent_char":'\t', "space_before_conditional":"true", "braces_on_own_line":"true", "space_after_anon_function":"false" }));
+            }
+            else if(extension == "java")
+            {
+                $('#indented_code').html(java_beautify(reader.result, { "indent_size": "6", "indent_char":'\t', "space_before_conditional":"true", "braces_on_own_line":"true", "space_after_anon_function":"false" }));
+            }
+            else if(extension == "py")
+            {
+                $('#indented_code').html(python_beautify(reader.result, { "indent_size": "6", "indent_char":'\t', "space_before_conditional":"true", "braces_on_own_line":"true", "space_after_anon_function":"false" }));
+            }
+        
+        }
+        
         
         function read_file() {
 	    var file = file_input.files[0];
@@ -184,7 +208,7 @@ button.submitbtn:active {
             var reader = new FileReader();
             reader.onload = function(e) {
                 $('#code_div').html("<pre id='indented_code'></pre>");
-                $('#indented_code').html(js_beautify(reader.result, { "indent_size": "6", "indent_char":'\t', "space_before_conditional":"true", "braces_on_own_line":"true", "space_after_anon_function":"false" }));
+                call_parser(fileExtension, reader);
                 apply_new_theme(fileExtension);
             }
            reader.readAsText(file);
