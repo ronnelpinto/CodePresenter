@@ -3,6 +3,7 @@ BE CSE Final Year project
 
 Code beautifier and formatter to consistently present code along with text blocks across different platforms and different screen resolutions.
 
+
   API calls for the three functions are: 
   
   For C:
@@ -13,6 +14,8 @@ Code beautifier and formatter to consistently present code along with text block
 
   For Python:
   python_beautify(source_code, options)
+
+P.S. Include the three corresponding Parser files, namely c_parser.js, java_parser.js and python_parser.js
   
 Options needs to be passed as a JSON object. 
 
