@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Perfect Presenter</title>
+      <script type="text/javascript" src="./lib/c_parser.js"></script>
+      <script type="text/javascript" src="./lib/java_parser.js"></script>
+      <script type="text/javascript" src="./lib/python_parser.js"></script>
+      <script type="text/javascript" src="./lib/jquery-2.1.3.js"></script>
+      <script type="text/javascript" src="./lib/jquery.snippet.js"></script>
+      <link type="text/css" rel="stylesheet" href="./css/jquery.snippet.css">
+      <link type="text/css" rel="stylesheet" href="./css/bootstrap.css">
+      <link type="text/css" rel="stylesheet" href="./css/bootstrap-theme.css">
+      <script type="text/javascript" src="./lib/config.js"></script>
+      <script type="text/javascript" src="./lib/bootstrap.js"></script>
+      <script type="text/javascript" src="./lib/reader.js"></script>
+      <style type="text/css">
+         html {
+         font-size: 62.5%;
+         }
+         body {
+         font-size: 1em;
+         }
+         @media (max-width: 300px) {
+         html {
+         font-size: 75%;
+         }
+         pre {
+         word-break: keep-all;
+         font-family:Courier ;
+         font-size: 90%;
+         }
+         }
+         @media (min-width: 500px) {
+         html {
+         font-size: 80%;
+         }
+         pre {
+         word-break: keep-all;
+         font-family:Courier ;
+         font-size: 90%;
+         }
+         }
+         @media (min-width: 700px) {
+         html {
+         font-size: 100%;
+         }
+         pre {
+         word-break: keep-all;
+         font-family:Courier ;
+         font-size: 95%;
+         }
+         }
+         @media (min-width: 1200px) {
+         html {
+         font-size: 150%;
+         }
+         pre {
+         word-break: keep-all;
+         font-size: 100%;
+         }
+         }button {
+         height: 35px;
+         border: none;
+         border-radius: 4px;
+         font-size: 14px;
+         color: #fff;
+         font-weight: bold;
+         text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+         overflow: hidden;
+         outline: none;
+         }
+         button.submitbtn {
+         background-image: -moz-linear-gradient(#97c16b, #8ab959);
+         background-image: -webkit-linear-gradient(#97c16b, #8ab959);
+         background-image: linear-gradient(#97c16b, #8ab959);
+         border-bottom: 1px solid #648c3a;
+         cursor: pointer;
+         color: #fff;h
+         }
+         button.submitbtn:hover {
+         background-image: -moz-linear-gradient(#8ab959, #7eaf4a);
+         background-image: -webkit-linear-gradient(#8ab959, #7eaf4a);
+         background-image: linear-gradient(#8ab959, #7eaf4a);
+         }
+         button.submitbtn:active {
+         height: 34px;
+         border-bottom: 0;
+         margin: 1px 0 0 0;
+         background-image: -moz-linear-gradient(#7eaf4a, #8ab959);
+         background-image: -webkit-linear-gradient(#7eaf4a, #8ab959);
+         background-image: linear-gradient(#7eaf4a, #8ab959);
+         -moz-box-shadow: inset 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+         -webkit-box-shadow: inset 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+         box-shadow: inset 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+         }
+      </style>
+   </head>
+   <body onload="init();">
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-xs-4 col-xs-offset-1">
+               <div class="row">
+
+               </div>
+            </div>
+            </br>
+            <div class="col-xs-12" style="text-align:center">
+               <a id="prev-style" href="#">Prev</a>
+               <select id="theme_select">
+                  <option>acid</option>
+                  <option>berries-dark</option>
+                  <option>berries-light</option>
+                  <option>bipolar</option>
+                  <option>blacknblue</option>
+                  <option>bright</option>
+                  <option>contrast</option>
+                  <option>darkblue</option>
+                  <option>darkness</option>
+                  <option>desert</option>
+                  <option>dull</option>
+                  <option>easter</option>
+                  <option>emacs</option>
+                  <option>golden</option>
+                  <option>greenlcd</option>
+                  <option>ide-anjuta</option>
+                  <option>ide-codewarrior</option>
+                  <option>ide-devcpp</option>
+                  <option>ide-eclipse</option>
+                  <option>ide-kdev</option>
+                  <option>ide-msvcpp</option>
+                  <option>kwrite</option>
+                  <option>matlab</option>
+                  <option>navy</option>
+                  <option>nedit</option>
+                  <option>neon</option>
+                  <option>night</option>
+                  <option>pablo</option>
+                  <option>peachpuff</option>
+                  <option>print</option>
+                  <option>rand01</option>
+                  <option>random</option>
+                  <option>the</option>
+                  <option>typical</option>
+                  <option>vampire</option>
+                  <option selected>vim</option>
+                  <option>vim-dark</option>
+                  <option>whatis</option>
+                  <option>whitengrey</option>
+                  <option>zellner</option>
+               </select>
+               <a id="next-style" href="#">Next</a>
+            </div>
+            </br>
+            </br>
+            <div class="col-submit">
+            </div>
+         </div>
+         <div id='outer'>
+         </div>
+      </div>
+      <script type="text/javascript">
+         
+			function init() {
+			$('#theme_select').change(apply_theme);
+			$("#prev-style").click(function() {
+				$(this).blur();
+				var sel = $("#theme_select option:selected");
+				var index = sel.index();
+				var selme = index - 1;
+				if (selme == -1) {
+					selme = ($('#theme_select option').length) - 1
+				};
+				sel.removeAttr("selected");
+				$("#theme_select option").eq(selme).attr("selected", "selected");
+				apply_theme();
+				return false;
+			});
+
+			$("#next-style").click(function() {
+				$(this).blur();
+				var sel = $("#theme_select option:selected");
+				var index = sel.index();
+				var selme = index + 1;
+				if (selme == ($('#theme_select option').length)) {
+					selme = 0
+				};
+				sel.removeAttr("selected");
+				$("#theme_select option").eq(selme).attr("selected", "selected");
+				apply_theme();
+				return false;
+			});
+			apply_theme();
+			blocks();
+
+		}
+
+		function apply_theme() {
+			var theme = $('#theme_select').find(":selected").text();
+			$('.indented_code').snippet("java", {
+				style: theme,
+				menu: false
+			});
+		}
+
+		function apply_new_theme(extension) {
+			var theme = $('#theme_select').find(":selected").text();
+			if (extension == "c") {
+				$('#indented_code').snippet("c", {
+					style: theme,
+					menu: false
+				});
+			} else if (extension == "java") {
+				$('#indented_code').snippet("java", {
+					style: theme,
+					menu: false
+				});
+			} else if (extension == "py") {
+				$('#indented_code').snippet("python", {
+					style: theme,
+					menu: false
+				});
+			}
+		}
+		var reader = new Reader();
+
+		var file;
+		var x = ''
+
+		function blocks() {
+
+			var blocks = JSON.parse(localStorage.getItem("file_contents"))
+			if (blocks != 'nothing') {
+				//alert(blocks)
+				var blockslen = blocks.length;
+				for (var i = 0; i < blockslen; i++) {
+
+
+
+					if (i % 2 != 0) {
+						$('#outer').append("<div id='code_div" + i + "'></div>");
+						$('#code_div' + i).html("<pre class='indented_code' id='" + i + "'></pre>")
+						var obj = get_config();
+						obj = JSON.parse(obj);
+						console.log(obj);
+						if (obj != null) {
+							console.log("not null");
+							$('#' + i).html(c_beautify(blocks[i], obj))
+						} else {
+							console.log(" null");
+							$('#' + i).html(c_beautify(blocks[i], {
+								indent_size: 4
+							}))
+						}
+
+					} else {
+						blocks[i] = checkImage(blocks[i], i)
+						$('#outer').append("<div id='text_div" + i + "'></div>");
+						$('#text_div' + i).html(blocks[i])
+					}
+				}
+				apply_theme()
+			}
+		}
+
+		function checkImage(text, i) {
+			if (text.indexOf("<pp_img>") > -1) {
+				var temp = text.split("<pp_img>")[1]
+				var link = temp.split("</pp_img>")[0]
+				var nblock = temp.split("</pp_img>")[1]
+				$('#outer').append("<div id='img_div" + i + "'></div>");
+				$('#img_div' + i).html("<img src='getImage.php?file=" + link + "' width=400px height=400px>")
+				return nblock
+			} else
+			if (text.indexOf("<pp_py>") > -1) {
+				var temp = text.split("<pp_py>")[1]
+				var link = temp.split("</pp_py>")[0]
+				var nblock = temp.split("</pp_py>")[1]
+				$('#outer').append("<div id='code_div" + i + "'></div>");
+				$('#code_div' + i).html("<pre class='indented_code' id='" + i + "'></pre>")
+				var xhr = new XMLHttpRequest();
+				var formData = new FormData();
+				formData.append("input", link);
+				formData.append("indent-size", "5")
+				formData.append("max_line_length", "10")
+				xhr.open("POST", "http://localhost/pp/python_reindent.php", false);
+
+				xhr.send(formData);
+				$('#' + i).html(xhr.responseText)
+				var theme = $('#theme_select').find(":selected").text();
+				$('#' + i).snippet("python", {
+					style: theme,
+					menu: false
+				});
+				return nblock
+			} else {
+				return text
+			}
+		}
+
+		$('#settings').click(function() {
+			window.location = "settings.html";
+		});
+         
+      </script>	
+   </body>
+</html>

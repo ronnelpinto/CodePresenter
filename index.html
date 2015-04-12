@@ -1,0 +1,505 @@
+<html lang="en" class="no-js">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Code Presenter</title>
+      <script type="text/javascript" src="./lib/jquery-2.1.3.js"></script>
+      <link rel="stylesheet" type="text/css" media="all" href="css/styles.css">
+      <link rel="stylesheet" type="text/css" media="all" href="css/switchery.min.css">
+      <script type="text/javascript" src="./lib/switchery.min.js"></script>
+      <script type="text/javascript" src="./lib/config.js"></script>
+      <script src="lib/jquery-2.1.1.js"></script>
+      <script src="lib/jquery.mobile.custom.min.js"></script>
+      <script src="lib/main.js"></script> <!-- Resource jQuery -->
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="css/reset.css">
+      <!-- CSS reset -->
+      <link rel="stylesheet" href="css/help.css">
+      <!-- Resource style -->
+      <script src="lib/modernizr.js"></script> 
+      <link rel="stylesheet" type="text/css" href="css/default.css" />
+      <link rel="stylesheet" type="text/css" href="css/component.css" />
+      <script src="lib/modernizr.custom.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script src="lib/jquery.knob.js"></script>
+      <!-- jQuery File Upload Dependencies -->
+      <script src="lib/jquery.ui.widget.js"></script>
+      <script src="lib/jquery.iframe-transport.js"></script>
+      <script src="lib/jquery.fileupload.js"></script>
+      <script type="text/javascript" src="lib/reader.js"></script>
+      <link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+      <!-- Our main JS file -->
+      <script src="lib/file.js"></script>
+      <script src="lib/plugins.js"></script>
+      <script src="lib/app.js"></script>
+   </head>
+   <style>
+      #blue {
+      background-color:#3498DB;
+      background:url("data:image/svg+xml;utf8,
+      <svg xmlns='http://www.w3.org/2000/svg' width='50px' height='50px'>
+         <polyline points='46.139,15.518 25.166,36.49 4.193,15.519'/>
+      </svg>
+      ");
+      background-color:#3498DB;
+      background-repeat:no-repeat;
+      background-position: right 8px top 15px;
+      background-size: 16px 16px;
+      color:white;
+      padding:12px;
+      padding-right: 75px;
+      width:auto;
+      font-family:arial,tahoma;
+      font-size:20px;
+      color:#fff;
+      text-align:center;
+      text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);
+      border-radius:3px;
+      -webkit-border-radius:3px;
+      -webkit-appearance: none;
+      border:0;
+      outline:0;
+      -webkit-transition:0.3s ease all;
+      -moz-transition:0.3s ease all;
+      -ms-transition:0.3s ease all;
+      -o-transition:0.3s ease all;
+      transition:0.3s ease all;
+      }
+      #blue:focus, #blue:active {
+      border:0;
+      outline:0;
+      }#blue:hover {
+      background-color:#2980B9;
+      }
+   </style>
+   <body onload="init()">
+      <div class="container">
+         <header>
+            <h1>Code Presenter </h1>
+         </header>
+         <div class="main clearfix">
+            <nav id="menu" class="nav" >
+               <ul>
+                  <li>
+                     <a href="#" id="home">
+                     <span class="icon">
+                     <i aria-hidden="true" class="icon-home"></i>
+                     </span>
+                     <span>Home</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" id="aboutus">
+                     <span class="icon"> 
+                     <i aria-hidden="true" class="icon-team"></i>
+                     </span>
+                     <span>About Us</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" id="help">
+                     <span class="icon">
+                     <i aria-hidden="true" class="icon-services"></i>
+                     </span>
+                     <span>Help</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" id="settings">
+                     <span class="icon">
+                     <i aria-hidden="true" class="icon-portfolio"></i>
+                     </span>
+                     <span>Settings</span>
+                     </a>
+                  </li>
+               </ul>
+            </nav>
+            <form id="upload"  action="#" enctype="multipart/form-data" style="margin-top:200px" >
+               <div id="drop">
+                  Drop Here
+                  <a id="a" style="margin-top:30px">Browse</a>
+                  <a class="test" >Upload</a>
+                  <input type="file" name="fileupload1" id="fileupload1"/>
+               </div>
+               <ul id="ul">
+               </ul>
+            </form>
+         </div>
+      </div>
+      <div id="site-content" style="display:none; margin-top:-440px">
+         <main class="main-content">
+            <div class="fullwidth-block content">
+               <div class="container">
+                  <h2 class="entry-title">Code Presenter</h2>
+                  <p>This is the final year project. This software actually renders the code inside a book as per the user requirements</p>
+                  <div class="team image-left">
+                     <figure class="team-image"><img src="img/nsk.jpg" alt="person-1"></figure>
+                     <h3 class="team-name">NS KUMAR</h3>
+                     <small class="team-desc">Project Guide, Professor, Computer Science, PESIT</small>
+                     
+                  </div>
+                  <div class="team image-left">
+                     <figure class="team-image"><img src="img/rgvr.jpg" alt="person-2"></figure>
+                     <br>
+                     <h3 class="team-name">Raghuveer Pai M</h3>
+                     <small class="team-desc">1PI11CS129</small>
+                     
+                  </div>
+                  <div class="team image-left">
+                     <figure class="team-image"><img src="img/ron.jpg" alt="person-3"></figure>
+                     <br>
+                     <h3 class="team-name">Ronnel Pinto</h3>
+                     <small class="team-desc">1PI11CS115</small>
+                     
+                  </div>
+                  <div class="team image-left">
+                     <figure class="team-image"><img src="img/pun.jpg" alt="person-4"></figure>
+                     <br>
+                     <h3 class="team-name">Puneeth P</h3>
+                     <small class="team-desc">1PI11CS126</small>
+                     
+                  </div>
+               </div>
+            </div>
+         </main>
+      </div>
+      <div id="body" style="display:none"; >
+         <section class="cd-faq" style="margin-top:-450px">
+            <ul class="cd-faq-categories">
+               <br><br>
+               <li><a class="selected" href="#basics">File Upload</a></li>
+               <li><a href="#mobile">Configuration</a></li>
+               <li><a href="#delivery">Viewer</a></li>
+            </ul>
+            <!-- cd-faq-categories -->
+            <div class="cd-faq-items">
+               <ul id="basics" class="cd-faq-group">
+                  <li class="cd-faq-title">
+                     <h2>File Upload</h2>
+                  </li>
+                  <li>
+                     <a class="cd-faq-trigger" href="#0">Can I upload any files?</a>
+                     <div class="cd-faq-content">
+                        <p>No the files with extension 'tar.gz' are only allowed</p>
+                     </div>
+                     <!-- cd-faq-content -->
+                  </li>
+                  <li>
+                     <a class="cd-faq-trigger" href="#0">Can I upload multiple files?</a>
+                     <div class="cd-faq-content">
+                        <p>No you can upload only one file at a time and view</p>
+                     </div>
+                     <!-- cd-faq-content -->
+                  </li>
+                  <li>
+                     <a class="cd-faq-trigger" href="#0">Is there any required format for the book file?</a>
+                     <div class="cd-faq-content">
+                        <p>Yes we have used a standard format. And our software only works if the uploaded book/file follows this convention.<br>
+						The link to the images should be given in "pp_img" tags. The code part should be between "pp_code" tag. The link to the python tag should be given between "pp_py" tags. Then the text can be anywhere.</p>
+                     </div>
+                     <!-- cd-faq-content -->
+                  </li>
+                 
+               </ul>
+               <!-- cd-faq-group -->
+               <ul id="mobile" class="cd-faq-group">
+                  <li class="cd-faq-title">
+                     <h2>Configuration</h2>
+                  </li>
+                  <li>
+                     <a class="cd-faq-trigger" href="#0">Is there default configuration for how the code has to be presented?</a>
+                     <div class="cd-faq-content">
+                        <p>Yes there is default configuration. If the user doesn't specify his/her custom configuration, the viewer uses default configuration and renders the code </p>
+                     </div>
+                     <!-- cd-faq-content -->
+                  </li>
+                  <li>
+                     <a class="cd-faq-trigger" href="#0">Can I give different configuration for different languages?</a>
+                     <div class="cd-faq-content">
+                        <p>Yes, first you can select to which language you have to provide configuration and provide custom configuration only to that language </p>
+                     </div>
+                     <!-- cd-faq-content -->
+                  </li>
+                  <li>
+                     <a class="cd-faq-trigger" href="#0">How to give custom configuration?</a>
+                     <div class="cd-faq-content">
+                        <p>Go to "Settings" tab and choose the required language. Then provide necessary values for different fields. Then your code will be rendered using those new values</p>
+                     </div>
+                     <!-- cd-faq-content -->
+                  </li>
+               </ul>
+               <!-- cd-faq-group -->
+               <ul id="delivery" class="cd-faq-group">
+                  <li class="cd-faq-title">
+                     <h2>Viewer</h2>
+                  </li>
+                  <li>
+                     <a class="cd-faq-trigger" href="#0">Does the viewer page changes according to device sizes?</a>
+                     <div class="cd-faq-content">
+                        <p>Yes the viewer page is configured to change based on the screen sizes. Even the font, the look and feel of the viewer also changes </p>
+                     </div>
+                     <!-- cd-faq-content -->
+                  </li>
+                  <li>
+                     <a class="cd-faq-trigger" href="#0">Can I change the background of the viewer?</a>
+                     <div class="cd-faq-content">
+                        <p>Yes you can select your own theme on the top of the viewer based on your taste.</p>
+                     </div>
+                     <!-- cd-faq-content -->
+                  </li>
+                  <li>
+                     <a class="cd-faq-trigger" href="#0">Can I change the background of even the normal text?</a>
+                     <div class="cd-faq-content">
+                        <p>No this software only deals with beautifying the code part and leave the rest as it is.</p>
+                     </div>
+                     <!-- cd-faq-content -->
+                  </li>
+                  
+               </ul>
+               <!-- cd-faq-group -->
+            </div>
+            <!-- cd-faq-items -->
+            <a href="#0" class="cd-close-panel">Close</a>
+         </section>
+         <!-- cd-faq -->
+      </div>
+      <script>
+         //  The function to change the class
+         var changeClass = function (r,className1,className2) {
+         	var regex = new RegExp("(?:^|\\s+)" + className1 + "(?:\\s+|$)");
+         	if( regex.test(r.className) ) {
+         		r.className = r.className.replace(regex,' '+className2+' ');
+             }
+             else{
+         		r.className = r.className.replace(new RegExp("(?:^|\\s+)" + className2 + "(?:\\s+|$)"),' '+className1+' ');
+             }
+             return r.className;
+         };	
+         
+         //  Creating our button in JS for smaller screens
+         var menuElements = document.getElementById('menu');
+         menuElements.insertAdjacentHTML('afterBegin','<button type="button" id="menutoggle" class="navtoogle" aria-hidden="true"><i aria-hidden="true" class="icon-menu"> </i> Menu</button>');
+         
+         //  Toggle the class on click to show / hide the menu
+         document.getElementById('menutoggle').onclick = function() {
+         	changeClass(this, 'navtoogle active', 'navtoogle');
+         }
+         
+         // http://tympanus.net/codrops/2013/05/08/responsive-retina-ready-menu/comment-page-2/#comment-438918
+         document.onclick = function(e) {
+         	var mobileButton = document.getElementById('menutoggle'),
+         		buttonStyle =  mobileButton.currentStyle ? mobileButton.currentStyle.display : getComputedStyle(mobileButton, null).display;
+         
+         	if(buttonStyle === 'block' && e.target !== mobileButton && new RegExp(' ' + 'active' + ' ').test(' ' + mobileButton.className + ' ')) {
+         		changeClass(mobileButton, 'navtoogle active', 'navtoogle');
+         	}
+         }
+      </script>
+      <!-- SETTINGS -->
+      <div id="set" style="display:none">
+         <div id="wrapper" style="margin-top:-400px">
+            <select id="blue">
+               <option selected="selected" disabled>Choose a Language</option>
+               <option value="C">C</option>
+               <option value="Java">Java</option>
+               <option value="Python">Python</option>
+            </select>
+            <form id="form" class="c" style="display:none">
+               <div class="col-3">
+                  <label>
+                  Indent Size
+                  <input placeholder="What indent size you prefer?" id="indent_size" name="indent_size" tabindex="3">
+                  </label>
+               </div>
+               <div class="col-3">
+                  <label>
+                     Indent Character
+                     <select tabindex="5" name="indent_char">
+                        <option value=" ">Use space for indentation</option>
+                        <option value='tab'>Use tab for indentation</option>
+                        <option value='new'>Use new line for indentation</option>
+                     </select>
+                  </label>
+               </div>
+               <div class="col-3">
+                  <label>Preserve newlines??</label>
+                  <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="preserve_newlines"></center>
+               </div>
+               <div class="col-3">
+                  <label>Space before Conditional??</label>
+                  <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="space_before_conditional"></center>
+               </div>
+               <div class="col-3 switch">
+                  <label>Braces on own line??</label>
+                  <center style="position:relative;margin-bottom:5px;"><input type="checkbox" class="js-switch" name="braces_on_own_line"></center>
+               </div>
+               <div class="col-3">
+                  <label>Space before function parameters??</label>
+                  <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="space_after_anon_function"></center>
+               </div>
+               <div class="col-submit">
+                  <button class="submitbtn" id="submit">Submit</button>
+               </div>
+            </form>
+            <form id="form" class="java" style="display:none">
+               <div class="col-3">
+                  <label>
+                  Indent Size
+                  <input placeholder="What indent size you prefer?" id="indent_size" name="indent_size" tabindex="3">
+                  </label>
+               </div>
+               <div class="col-3">
+                  <label>
+                     Indent Character
+                     <select tabindex="5" name="indent_char">
+                        <option value=" ">Use space for indentation</option>
+                        <option value='tab'>Use tab for indentation</option>
+                        <option value='new'>Use new line for indentation</option>
+                     </select>
+                  </label>
+               </div>
+               <div class="col-3">
+                  <label>Space before Conditional??</label>
+                  <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="space_before_conditional"></center>
+               </div>
+               <div class="col-2 switch">
+                  <label>Braces on own line??</label>
+                  <center style="position:relative;margin-bottom:5px;"><input type="checkbox" class="js-switch" name="braces_on_own_line"></center>
+               </div>
+               <div class="col-2">
+                  <label>Space before function parameters??</label>
+                  <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="space_after_anon_function"></center>
+               </div>
+               <div class="col-submit">
+                  <button class="submitbtn" id="submit">Submit</button>
+               </div>
+            </form>
+            <form id="form" class="python" style="display:none">
+               <div class="col-3">
+                  <label>
+                  Indent Size
+                  <input placeholder="What indent size you prefer?" id="indent_size" name="indent_size" tabindex="3">
+                  </label>
+               </div>
+               <div class="col-submit">
+                  <button class="submitbtn" id="submit">Submit</button>
+               </div>
+            </form>
+         </div>
+      </div>
+      <script type="text/javascript">
+         var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+		 elems.forEach(function(html) {
+			 var switchery = new Switchery(html);
+		 });
+
+		 $('#submit').click(function(e) {
+			 e.preventDefault();
+
+			 save_config();
+			 var obj = get_config();
+			 //alert(obj);
+			 //window.location.href = "new.html";
+
+			 //read_file()
+		 });
+
+		 $('#blue').change(function() {
+			 var val = $('#blue').val()
+			 if (val == "C") {
+				 $('form.c').show();
+				 $('form.java').hide();
+				 $('form.python').hide();
+
+			 }
+			 if (val == "Java") {
+				 $('form.java').show();
+				 $('form.c').hide();
+				 $('form.python').hide();
+			 }
+			 if (val == "Python") {
+				 $('form.python').show();
+				 $('form.c').hide();
+				 $('form.java').hide();
+			 }
+		 })
+
+		 $('#aboutus').click(function() {
+			 $('#upload').hide();
+			 $('#site-content').show();
+			 $('#body').hide();
+			 $('#set').hide();
+
+		 })
+
+
+		 $('#home').click(function() {
+			 $('#upload').show();
+			 $('#site-content').hide();
+			 $('#body').hide();
+			 $('#set').hide();
+
+		 })
+
+		 $('#help').click(function() {
+			 $('#upload').hide();
+			 $('#site-content').hide();
+			 $('#body').show();
+			 $('#set').hide();
+
+		 })
+
+		 $('#settings').click(function() {
+			 $('#upload').hide();
+			 $('#site-content').hide();
+			 $('#body').hide();
+			 $('#set').show();
+
+		 })
+
+		 function init() {
+			 $('#fileupload1').change(read_file);
+		 }
+
+		 var reader = new Reader();
+
+		 function read_file() {
+
+			 var formData = new FormData();
+			 formData.append("file_input", this.files.item(0));
+			 var xhr = new XMLHttpRequest();
+			 xhr.open("POST", "http://localhost/pp/upload.php", false);
+
+			 xhr.send(formData);
+
+			 reader.readBook(xhr.responseText);
+			 t = setInterval(blocks, 500)
+		 }
+
+		 var file;
+		 var x = ''
+
+		 function blocks() {
+
+			 var blocks = reader.getBlocks();
+			 if (blocks != 'nothing') {
+				 clearInterval(t);
+				 localStorage.setItem("file_contents", JSON.stringify(blocks))
+			 }
+
+
+
+
+		 }
+
+		 $('.test').click(function() {
+			 window.location = "viewer.html"
+		 })
+         
+         
+         
+      </script>
+   </body>
+</html>
