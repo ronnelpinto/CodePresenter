@@ -203,6 +203,12 @@
 			});
 		}
 
+        function apply_theme_with_obj(obj) {
+            alert(JSON.stringify(obj));
+            var theme = $('#theme_select').find(":selected").text();
+            $('.indented_code').snippet("java",{ style:theme, menu:obj['menu'], transparent:obj['transparent'], collapse:obj['collapse'], startText:obj['startText'], showNum:obj['showNum'], startCollapsed:obj['startCollapsed'], showMsg:obj['showMsg'], hideMsg:obj['hideMsg'], clipboard:obj['clipboard'] });
+        }
+          
 		function apply_new_theme(extension) {
 			var theme = $('#theme_select').find(":selected").text();
 			if (extension == "c") {
@@ -259,7 +265,11 @@
 						$('#text_div' + i).html(blocks[i])
 					}
 				}
-				apply_theme()
+				//apply_theme()
+                
+                //apply the theme with the settings from the config object
+                apply_theme_with_obj(obj);
+
 			}
 		}
 
