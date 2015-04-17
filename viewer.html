@@ -161,7 +161,7 @@
       </div>
       <script type="text/javascript">
          
-			function init() {
+		function init() {
 			$('#theme_select').change(apply_theme);
 			$("#prev-style").click(function() {
 				$(this).blur();
@@ -192,42 +192,14 @@
 			});
 			apply_theme();
 			blocks();
-
 		}
 
-		function apply_theme() {
-			var theme = $('#theme_select').find(":selected").text();
-			$('.indented_code').snippet("java", {
-				style: theme,
-				menu: false
-			});
-		}
-
-        function apply_theme_with_obj(obj) {
-            alert(JSON.stringify(obj));
+        function apply_theme_with_obj(id, obj, lang) {
+            //alert(JSON.stringify(obj));
             var theme = $('#theme_select').find(":selected").text();
-            $('.indented_code').snippet("java",{ style:theme, menu:obj['menu'], transparent:obj['transparent'], collapse:obj['collapse'], startText:obj['startText'], showNum:obj['showNum'], startCollapsed:obj['startCollapsed'], showMsg:obj['showMsg'], hideMsg:obj['hideMsg'], clipboard:obj['clipboard'] });
+            $(id).snippet(lang,{ style:theme, menu:obj['menu'], transparent:obj['transparent'], collapse:obj['collapse'], startText:obj['startText'], showNum:obj['showNum'], startCollapsed:obj['startCollapsed'], showMsg:obj['showMsg'], hideMsg:obj['hideMsg'], clipboard:obj['clipboard'] });
         }
-          
-		function apply_new_theme(extension) {
-			var theme = $('#theme_select').find(":selected").text();
-			if (extension == "c") {
-				$('#indented_code').snippet("c", {
-					style: theme,
-					menu: false
-				});
-			} else if (extension == "java") {
-				$('#indented_code').snippet("java", {
-					style: theme,
-					menu: false
-				});
-			} else if (extension == "py") {
-				$('#indented_code').snippet("python", {
-					style: theme,
-					menu: false
-				});
-			}
-		}
+         
 		var reader = new Reader();
 
 		var file;
@@ -240,80 +212,100 @@
 				//alert(blocks)
 				var blockslen = blocks.length;
 				for (var i = 0; i < blockslen; i++) {
-
-
-
-					if (i % 2 != 0) {
-						$('#outer').append("<div id='code_div" + i + "'></div>");
-						$('#code_div' + i).html("<pre class='indented_code' id='" + i + "'></pre>")
-                       // save_config();
-						var obj = get_c_config();
-                        alert(JSON.srtingify(obj))
-						obj = JSON.parse(obj);
-						console.log(obj);
-						if (obj != null) {
-							console.log("not null");
-							$('#' + i).html(c_beautify(blocks[i], obj))
-						} else {
-							console.log(" null");
-							$('#' + i).html(c_beautify(blocks[i], {
-								indent_size: 4
-							}))
-						}
-
-					} else {
-						blocks[i] = checkImage(blocks[i], i)
-						$('#outer').append("<div id='text_div" + i + "'></div>");
-						$('#text_div' + i).html(blocks[i])
+					
+					if(blocks[i].indexOf("<pp_") == -1) {
+						generatePara(blocks[i],i);
+						continue;
+					}
+					if(blocks[i].indexOf("<pp_img>") != -1) {
+						generateImage(blocks[i],i);
+						continue;
+					}
+					if(blocks[i].indexOf("<pp_c>") != -1) {
+						generateC(blocks[i],i);
+						continue;
+					}
+					if(blocks[i].indexOf("<pp_cl>") != -1) {
+						//getContents
+						//generateC(blocks[i],i);
+						continue;
+					}
+					if(blocks[i].indexOf("<pp_java>") != -1) {
+						generateJava(blocks[i],i);
+						continue;
+					}
+					if(blocks[i].indexOf("<pp_javal>") != -1) {
+						//getContents
+						//generateJava(blocks[i],i);
+						continue;
+					}
+					if(blocks[i].indexOf("<pp_py>") != -1) {
+						generatePython(blocks[i],i);
+						continue;
 					}
 				}
-				//apply_theme()
-                
-                //apply the theme with the settings from the config object
-                apply_theme_with_obj(obj);
-
 			}
 		}
-
-		function checkImage(text, i) {
-			if (text.indexOf("<pp_img>") > -1) {
-				var temp = text.split("<pp_img>")[1]
-				var link = temp.split("</pp_img>")[0]
-				var nblock = temp.split("</pp_img>")[1]
-				$('#outer').append("<div id='img_div" + i + "'></div>");
-				$('#img_div' + i).html("<img src='getImage.php?file=" + link + "' width=400px height=400px>")
-				return nblock
-			} else
-			if (text.indexOf("<pp_py>") > -1) {
-				var temp = text.split("<pp_py>")[1]
-				var link = temp.split("</pp_py>")[0]
-				var nblock = temp.split("</pp_py>")[1]
-				$('#outer').append("<div id='code_div" + i + "'></div>");
-				$('#code_div' + i).html("<pre class='indented_code' id='" + i + "'></pre>")
-				var xhr = new XMLHttpRequest();
-				var formData = new FormData();
-				formData.append("input", link);
-				formData.append("indent-size", "5")
-				formData.append("max_line_length", "10")
-				xhr.open("POST", "http://localhost/pp/python_reindent.php", false);
-
-				xhr.send(formData);
-				$('#' + i).html(xhr.responseText)
-				var theme = $('#theme_select').find(":selected").text();
-				$('#' + i).snippet("python", {
-					style: theme,
-					menu: false
-				});
-				return nblock
-			} else {
-				return text
-			}
+		
+		function apply_theme() {
+			var c = get_c_config();
+			var java = get_java_config();
+			var python = get_python_config();
+			apply_theme_with_obj('.indented_c',c,"c");
+			apply_theme_with_obj('.indented_java',java,"java");
+			apply_theme_with_obj('.indented_python',python,"python");
 		}
+		
+		function generatePara(text, i) {
+			$('#outer').append("<div id='text_div" + i + "'></div>");
+			$('#text_div' + i).html(text)
+		}
+		
+		function generateC(text, i) {
+			var temp = text.split("<pp_c>")[1]
+			var link = temp.split("</pp_c>")[0]
+			$('#outer').append("<div id='code_div" + i + "'></div>");
+			$('#code_div' + i).html("<pre class='indented_c' id='" + i + "'></pre>")
+			var obj = get_c_config();
+			$('#' + i).html(c_beautify(link,obj))
+			apply_theme_with_obj('#' + i, obj, "c");
+		}
+		
+		function generateJava(text, i) {
+			var temp = text.split("<pp_java>")[1]
+			var link = temp.split("</pp_java>")[0]
+			$('#outer').append("<div id='code_div" + i + "'></div>");
+			$('#code_div' + i).html("<pre class='indented_java' id='" + i + "'></pre>")
+			var obj = get_java_config();
+			$('#' + i).html(java_beautify(link,obj))
+			apply_theme_with_obj('#' + i, obj, "java");
+		}
+		
+		function generatePython(text, i) {
+			var temp = text.split("<pp_py>")[1]
+			var link = temp.split("</pp_py>")[0]
+			$('#outer').append("<div id='code_div" + i + "'></div>");
+			$('#code_div' + i).html("<pre class='indented_python' id='" + i + "'></pre>")
+			var xhr = new XMLHttpRequest();
+			var formData = new FormData();
+			formData.append("input", link);
+			formData.append("indent-size", "5")
+			formData.append("max_line_length", "10")
+			xhr.open("POST", "http://localhost/pp/python_reindent.php", false);
 
-//		$('#settings').click(function() {
-//			window.location = "settings.html";
-//		});
-         
+			xhr.send(formData);
+			$('#' + i).html(xhr.responseText)
+			var theme = $('#theme_select').find(":selected").text();
+			var obj = get_python_config();
+			apply_theme_with_obj('#' + i, obj, "python");
+		}
+		
+		function generateImage(text, i) {
+			var temp = text.split("<pp_img>")[1]
+			var link = temp.split("</pp_img>")[0]
+			$('#outer').append("<div id='img_div" + i + "'></div>");
+			$('#img_div' + i).html("<img src='getImage.php?file=" + link + "' width=400px height=400px>")
+		}       
       </script>	
    </body>
 </html>

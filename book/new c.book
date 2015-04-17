@@ -1,9 +1,9 @@
-<pp_img>img/abc.jpg</pp_img>
 Chapter 1 - A Tutorial Introduction
 Let us begin with a quick introduction in C. Our aim is to show the essential elements of the
 language in real programs, but without getting bogged down in details, rules, and exceptions.
-<pp_code>int main(){printf("why\n");}</pp_code>
+<pp_br>
 <pp_img>img/xyz.jpg</pp_img>
+<pp_br>
 At this point, we are not trying to be complete or even precise (save that the examples are
 meant to be correct). We want to get you as quickly as possible to the point where you can
 write useful programs, and to do that we have to concentrate on the basics: variables and
@@ -11,20 +11,49 @@ constants, arithmetic, control flow, functions, and the rudiments of input and o
 intentionally leaving out of this chapter features of C that are important for writing bigger
 programs. These include pointers, structures, most of C's rich set of operators, several controlflow
 statements, and the standard library.
-<pp_code>
-int main(){printf("why\n");}
-</pp_code>
-<pp_code>public class Hello{private int a;}</pp_code>
-<pp_code>int main(){char a[100], b[100];printf("Enter the string to check if it is a palindrome\n");gets(a);
- strcpy(b,a);strrev(b);
-if (strcmp(a,b) == 0)
-      { printf("Entered string is a palindrome.\n"); }
- else
-      { printf("Entered string is not a palindrome.\n"); }
- 
-   return 0;
-}</pp_code>
+<pp_br>
+<pp_c>int main(){printf("why\n");}</pp_c>
+<pp_br>
+At this point, we are not trying to be complete or even precise (save that the examples are
+meant to be correct). We want to get you as quickly as possible to the point where you can
+write useful programs, and to do that we have to concentrate on the basics: variables and
+constants, arithmetic, control flow, functions, and the rudiments of input and output. We are
+intentionally leaving out of this chapter features of C that are important for writing bigger
+programs. These include pointers, structures, most of C's rich set of operators, several controlflow
+statements, and the standard library.
+<pp_br>
+<pp_cl>int main(){printf("why\n");}</pp_cl>
+<pp_br>
+At this point, we are not trying to be complete or even precise (save that the examples are
+meant to be correct). We want to get you as quickly as possible to the point where you can
+write useful programs, and to do that we have to concentrate on the basics: variables and
+constants, arithmetic, control flow, functions, and the rudiments of input and output. We are
+intentionally leaving out of this chapter features of C that are important for writing bigger
+programs. These include pointers, structures, most of C's rich set of operators, several controlflow
+statements, and the standard library.
+<pp_br>
+<pp_java>public class Hello{private int a;}</pp_java>
+<pp_br>
+At this point, we are not trying to be complete or even precise (save that the examples are
+meant to be correct). We want to get you as quickly as possible to the point where you can
+write useful programs, and to do that we have to concentrate on the basics: variables and
+constants, arithmetic, control flow, functions, and the rudiments of input and output. We are
+intentionally leaving out of this chapter features of C that are important for writing bigger
+programs. These include pointers, structures, most of C's rich set of operators, several controlflow
+statements, and the standard library.
+<pp_br>
+<pp_javal>public class Hello{private int a;}</pp_javal>
+<pp_br>
+At this point, we are not trying to be complete or even precise (save that the examples are
+meant to be correct). We want to get you as quickly as possible to the point where you can
+write useful programs, and to do that we have to concentrate on the basics: variables and
+constants, arithmetic, control flow, functions, and the rudiments of input and output. We are
+intentionally leaving out of this chapter features of C that are important for writing bigger
+programs. These include pointers, structures, most of C's rich set of operators, several controlflow
+statements, and the standard library.
+<pp_br>
 <pp_py>code/hello.py</pp_py>
+<pp_br>
 This approach and its drawbacks. Most notable is that the complete story on any particular
 feature is not found here, and the tutorial, by being brief, may also be misleading. And because
 the examples do not use the full power of C, they are not as concise and elegant as they might
