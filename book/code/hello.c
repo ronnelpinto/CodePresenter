@@ -1,0 +1,1 @@
+int main() { printf("From file\n"); return 0; }
