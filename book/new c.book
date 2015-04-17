@@ -22,7 +22,7 @@ intentionally leaving out of this chapter features of C that are important for w
 programs. These include pointers, structures, most of C's rich set of operators, several controlflow
 statements, and the standard library.
 <pp_br>
-<pp_cl>int main(){printf("why\n");}</pp_cl>
+<pp_cl>code/hello.c</pp_cl>
 <pp_br>
 At this point, we are not trying to be complete or even precise (save that the examples are
 meant to be correct). We want to get you as quickly as possible to the point where you can
@@ -42,7 +42,7 @@ intentionally leaving out of this chapter features of C that are important for w
 programs. These include pointers, structures, most of C's rich set of operators, several controlflow
 statements, and the standard library.
 <pp_br>
-<pp_javal>public class Hello{private int a;}</pp_javal>
+<pp_javal>code/hello.java</pp_javal>
 <pp_br>
 At this point, we are not trying to be complete or even precise (save that the examples are
 meant to be correct). We want to get you as quickly as possible to the point where you can

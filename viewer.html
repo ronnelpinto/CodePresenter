@@ -226,8 +226,7 @@
 						continue;
 					}
 					if(blocks[i].indexOf("<pp_cl>") != -1) {
-						//getContents
-						//generateC(blocks[i],i);
+						generateCl(blocks[i],i);
 						continue;
 					}
 					if(blocks[i].indexOf("<pp_java>") != -1) {
@@ -235,8 +234,7 @@
 						continue;
 					}
 					if(blocks[i].indexOf("<pp_javal>") != -1) {
-						//getContents
-						//generateJava(blocks[i],i);
+						generateJaval(blocks[i],i);
 						continue;
 					}
 					if(blocks[i].indexOf("<pp_py>") != -1) {
@@ -259,6 +257,32 @@
 		function generatePara(text, i) {
 			$('#outer').append("<div id='text_div" + i + "'></div>");
 			$('#text_div' + i).html(text)
+		}
+		
+		function generateCl(text, i) {
+			var temp = text.split("<pp_cl>")[1]
+			var link = temp.split("</pp_cl>")[0]
+			$('#outer').append("<div id='code_div" + i + "'></div>");
+			$('#code_div' + i).html("<pre class='indented_c' id='" + i + "'></pre>")
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "http://localhost/pp/get_code.php?filename="+link, false);
+			xhr.send();
+			var obj = get_c_config();
+			$('#' + i).html(c_beautify(xhr.responseText,obj))
+			apply_theme_with_obj('#' + i, obj, "c");
+		}
+		
+		function generateJaval(text, i) {
+			var temp = text.split("<pp_javal>")[1]
+			var link = temp.split("</pp_javal>")[0]
+			$('#outer').append("<div id='code_div" + i + "'></div>");
+			$('#code_div' + i).html("<pre class='indented_java' id='" + i + "'></pre>")
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "http://localhost/pp/get_code.php?filename="+link, false);
+			xhr.send();
+			var obj = get_java_config();
+			$('#' + i).html(java_beautify(xhr.responseText,obj))
+			apply_theme_with_obj('#' + i, obj, "java");
 		}
 		
 		function generateC(text, i) {
@@ -292,10 +316,8 @@
 			formData.append("indent-size", "5")
 			formData.append("max_line_length", "10")
 			xhr.open("POST", "http://localhost/pp/python_reindent.php", false);
-
 			xhr.send(formData);
 			$('#' + i).html(xhr.responseText)
-			var theme = $('#theme_select').find(":selected").text();
 			var obj = get_python_config();
 			apply_theme_with_obj('#' + i, obj, "python");
 		}
