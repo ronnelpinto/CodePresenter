@@ -305,7 +305,7 @@
                <option value="Java">Java</option>
                <option value="Python">Python</option>
             </select>
-            <form id="form" class="c" style="display:none">
+            <form id="c_form" class="c" style="display:none">
                <div class="col-3">
                   <label>
                   Indent Size
@@ -413,10 +413,10 @@
               </div>
                 
                <div class="col-submit">
-                  <button class="submitbtn" id="submit">Submit</button>
+                  <button class="submitbtn" id="c_submit">Submit</button>
                </div>
             </form>
-            <form id="form" class="java" style="display:none">
+            <form id="java_form" class="java" style="display:none">
                <div class="col-3">
                   <label>
                   Indent Size
@@ -520,10 +520,10 @@
               </div>
                 
                <div class="col-submit">
-                  <button class="submitbtn" id="submit">Submit</button>
+                  <button class="submitbtn" id="java_submit">Submit</button>
                </div>
             </form>
-            <form id="form" class="python" style="display:none">
+            <form id="python_form" class="python" style="display:none">
                <div class="col-3">
                   <label>
                   Indent Size
@@ -605,7 +605,7 @@
               </div>
                 
                <div class="col-submit">
-                  <button class="submitbtn" id="submit">Submit</button>
+                  <button class="submitbtn" id="python_submit">Submit</button>
                </div>
             </form>
          </div>
@@ -617,12 +617,32 @@
 			 var switchery = new Switchery(html);
 		 });
 
-		 $('#submit').click(function(e) {
+		 $('#c_submit').click(function(e) {
 			 e.preventDefault();
 
-			 save_config();
-			 var obj = get_config();
-			 //alert(obj);
+			 save_c_config();
+			 var obj = get_c_config();
+			 alert(obj);
+			 //window.location.href = "new.html";
+
+			 //read_file()
+		 });
+           $('#java_submit').click(function(e) {
+			 e.preventDefault();
+
+			 save_java_config();
+			 var obj = get_java_config();
+			 alert(obj);
+			 //window.location.href = "new.html";
+
+			 //read_file()
+		 });
+           $('#python_submit').click(function(e) {
+			 e.preventDefault();
+
+			 save_python_config();
+			 var obj = get_python_config();
+			 alert(obj);
 			 //window.location.href = "new.html";
 
 			 //read_file()

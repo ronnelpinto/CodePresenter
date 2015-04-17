@@ -246,7 +246,9 @@
 					if (i % 2 != 0) {
 						$('#outer').append("<div id='code_div" + i + "'></div>");
 						$('#code_div' + i).html("<pre class='indented_code' id='" + i + "'></pre>")
-						var obj = get_config();
+                       // save_config();
+						var obj = get_c_config();
+                        alert(JSON.srtingify(obj))
 						obj = JSON.parse(obj);
 						console.log(obj);
 						if (obj != null) {
@@ -308,9 +310,9 @@
 			}
 		}
 
-		$('#settings').click(function() {
-			window.location = "settings.html";
-		});
+//		$('#settings').click(function() {
+//			window.location = "settings.html";
+//		});
          
       </script>	
    </body>
