@@ -326,7 +326,7 @@
 			var temp = text.split("<pp_img>")[1]
 			var link = temp.split("</pp_img>")[0]
 			$('#outer').append("<div id='img_div" + i + "'></div>");
-			$('#img_div' + i).html("<img src='getImage.php?file=" + link + "' width=400px height=400px>")
+			$('#img_div' + i).html("<img src='getImage.php?file=" + link + "' style='max-width:100%;' width=400px height=400px>")
 		}       
       </script>	
    </body>
