@@ -309,14 +309,14 @@
                <div class="col-3">
                   <label>
                   Indent Size
-                  <input placeholder="What indent size you prefer?" id="indent_size" name="indent_size" tabindex="3">
+                  <input placeholder="What indent size you prefer?" id="indent_size" name="indent_size" tabindex="3" value="3">
                   </label>
                </div>
                <div class="col-3">
                   <label>
                      Indent Character
                      <select tabindex="5" name="indent_char">
-                        <option value=" ">Use space for indentation</option>
+                        <option value=" " selected>Use space for indentation</option>
                         <option value='tab'>Use tab for indentation</option>
                         <option value='new'>Use new line for indentation</option>
                      </select>
@@ -420,14 +420,14 @@
                <div class="col-3">
                   <label>
                   Indent Size
-                  <input placeholder="What indent size you prefer?" id="indent_size" name="indent_size" tabindex="3">
+                  <input placeholder="What indent size you prefer?" id="indent_size" name="indent_size" tabindex="3" value="3">
                   </label>
                </div>
                <div class="col-3">
                   <label>
                      Indent Character
                      <select tabindex="5" name="indent_char">
-                        <option value=" ">Use space for indentation</option>
+                        <option value=" " selected>Use space for indentation</option>
                         <option value='tab'>Use tab for indentation</option>
                         <option value='new'>Use new line for indentation</option>
                      </select>
@@ -527,7 +527,7 @@
                <div class="col-3">
                   <label>
                   Indent Size
-                  <input placeholder="What indent size you prefer?" id="indent_size" name="indent_size" tabindex="3">
+                  <input placeholder="What indent size you prefer?" id="indent_size" name="indent_size" tabindex="3" value="3">
                   </label>
                </div>
                 
@@ -702,7 +702,11 @@
 		 })
 
 		 function init() {
+		 
 			 $('#fileupload1').change(read_file);
+			 save_c_config();
+			 save_java_config();
+			 save_python_config();
 		 }
 
 		 var reader = new Reader();
