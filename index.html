@@ -86,20 +86,20 @@
 	
 
 <ul class="nav">
-	<li  class="test1" style="margin-left:100px">
-		<a href="#" id='home'>Home</a>
+	<li  class="test1">
+		<a href="#" id='home' style="margin-left:60px;" >Home</a>
 		
 	</li>
 	<li>
-		<a href="#" id='aboutus' style="margin-left:100px">About Us</a>
+		<a href="#" id='aboutus' style="margin-left:60px;">About Us</a>
 	
 	</li>
 	<li>
-		<a href="#" id='help' style="margin-left:100px">Help</a>
+		<a href="#" id='help' style="margin-left:60px">Help</a>
 		
 	</li>
 	<li>
-		<a href="#" id='settings' style="margin-left:100px">Settings</a>
+		<a href="#" id='settings' style="margin-left:60px">Settings</a>
 		
 	</li>
 	
@@ -677,7 +677,7 @@
 			 $('#set').show();
 
 		 })
-
+		var flag= 0;
 		 function init() {
 		 
 			 $('#fileupload1').change(read_file);
@@ -689,7 +689,7 @@
 		 var reader = new Reader();
 
 		 function read_file() {
-
+				flag = 1;
 			 var formData = new FormData();
 			 formData.append("file_input", this.files.item(0));
 			 var xhr = new XMLHttpRequest();
@@ -714,7 +714,11 @@
 		 }
 
 		 $('.test').click(function() {
-			 window.location = "viewer.html"
+			if( flag == 1) {
+   // you have a file
+			window.location = "viewer.html" }
+			else{
+			alert("Please upload the file");}
 		 })    
       </script>
 	
