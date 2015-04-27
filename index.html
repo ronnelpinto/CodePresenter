@@ -73,48 +73,42 @@
       background-color:#2980B9;
       }
    </style>
+   <link rel="stylesheet" type="text/css" href="css/style.css">
+       
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
    <body onload="init()">
       <div class="container">
          <header>
             <h1>Code Presenter </h1>
          </header>
          <div class="main clearfix">
-            <nav id="menu" class="nav" >
-               <ul>
-                  <li>
-                     <a href="#" id="home">
-                     <span class="icon">
-                     <i aria-hidden="true" class="icon-home"></i>
-                     </span>
-                     <span>Home</span>
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#" id="aboutus">
-                     <span class="icon"> 
-                     <i aria-hidden="true" class="icon-team"></i>
-                     </span>
-                     <span>About Us</span>
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#" id="help">
-                     <span class="icon">
-                     <i aria-hidden="true" class="icon-services"></i>
-                     </span>
-                     <span>Help</span>
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#" id="settings">
-                     <span class="icon">
-                     <i aria-hidden="true" class="icon-portfolio"></i>
-                     </span>
-                     <span>Settings</span>
-                     </a>
-                  </li>
-               </ul>
-            </nav>
+                <div class="container1">
+	
+
+<ul class="nav">
+	<li  class="test1" style="margin-left:100px">
+		<a href="#" id='home'>Home</a>
+		
+	</li>
+	<li>
+		<a href="#" id='aboutus' style="margin-left:100px">About Us</a>
+	
+	</li>
+	<li>
+		<a href="#" id='help' style="margin-left:100px">Help</a>
+		
+	</li>
+	<li>
+		<a href="#" id='settings' style="margin-left:100px">Settings</a>
+		
+	</li>
+	
+	
+	
+	
+	
+</ul>
+</div>
             <form id="upload"  action="#" enctype="multipart/form-data" style="margin-top:200px" >
                <div id="drop">
                   Drop Here
@@ -165,7 +159,7 @@
          </main>
       </div>
       <div id="body" style="display:none"; >
-         <section class="cd-faq" style="margin-top:-450px">
+         <section class="cd-faq" style="margin-top:-400px">
             <ul class="cd-faq-categories">
                <br><br>
                <li><a class="selected" href="#basics">File Upload</a></li>
@@ -277,24 +271,7 @@
              return r.className;
          };	
          
-         //  Creating our button in JS for smaller screens
-         var menuElements = document.getElementById('menu');
-         menuElements.insertAdjacentHTML('afterBegin','<button type="button" id="menutoggle" class="navtoogle" aria-hidden="true"><i aria-hidden="true" class="icon-menu"> </i> Menu</button>');
-         
-         //  Toggle the class on click to show / hide the menu
-         document.getElementById('menutoggle').onclick = function() {
-         	changeClass(this, 'navtoogle active', 'navtoogle');
-         }
-         
-         // http://tympanus.net/codrops/2013/05/08/responsive-retina-ready-menu/comment-page-2/#comment-438918
-         document.onclick = function(e) {
-         	var mobileButton = document.getElementById('menutoggle'),
-         		buttonStyle =  mobileButton.currentStyle ? mobileButton.currentStyle.display : getComputedStyle(mobileButton, null).display;
-         
-         	if(buttonStyle === 'block' && e.target !== mobileButton && new RegExp(' ' + 'active' + ' ').test(' ' + mobileButton.className + ' ')) {
-         		changeClass(mobileButton, 'navtoogle active', 'navtoogle');
-         	}
-         }
+        
       </script>
       <!-- SETTINGS -->
       <div id="set" style="display:none">
@@ -740,5 +717,6 @@
 			 window.location = "viewer.html"
 		 })    
       </script>
+	
    </body>
 </html>
