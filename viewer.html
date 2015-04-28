@@ -8,14 +8,58 @@
       <script type="text/javascript" src="./lib/python_parser.js"></script>
       <script type="text/javascript" src="./lib/jquery-2.1.3.js"></script>
       <script type="text/javascript" src="./lib/jquery.snippet.js"></script>
+	  	  <link rel="stylesheet" href="./css/codemirror.css">
+	  <script src="./lib/codemirror.js"></script>
+	   <script type="text/javascript" src="./lib/clike/clike.js"></script>
+      <script type="text/javascript" src="./lib/python/python.js"></script>
       <link type="text/css" rel="stylesheet" href="./css/jquery.snippet.css">
       <link type="text/css" rel="stylesheet" href="./css/bootstrap.css">
       <link type="text/css" rel="stylesheet" href="./css/bootstrap-theme.css">
       <script type="text/javascript" src="./lib/config.js"></script>
       <script type="text/javascript" src="./lib/bootstrap.js"></script>
       <script type="text/javascript" src="./lib/reader.js"></script>
+	  <link rel="stylesheet" href="./css/theme/3024-day.css">
+	<link rel="stylesheet" href="./css/theme/3024-night.css">
+	<link rel="stylesheet" href="./css/theme/ambiance.css">
+	<link rel="stylesheet" href="./css/theme/base16-dark.css">
+	<link rel="stylesheet" href="./css/theme/base16-light.css">
+	<link rel="stylesheet" href="./css/theme/blackboard.css">
+	<link rel="stylesheet" href="./css/theme/cobalt.css">
+	<link rel="stylesheet" href="./css/theme/colorforth.css">
+	<link rel="stylesheet" href="./css/theme/eclipse.css">
+	<link rel="stylesheet" href="./css/theme/elegant.css">
+	<link rel="stylesheet" href="./css/theme/erlang-dark.css">
+	<link rel="stylesheet" href="./css/theme/lesser-dark.css">
+	<link rel="stylesheet" href="./css/theme/liquibyte.css">
+	<link rel="stylesheet" href="./css/theme/mbo.css">
+	<link rel="stylesheet" href="./css/theme/mdn-like.css">
+	<link rel="stylesheet" href="./css/theme/midnight.css">
+	<link rel="stylesheet" href="./css/theme/monokai.css">
+	<link rel="stylesheet" href="./css/theme/neat.css">
+	<link rel="stylesheet" href="./css/theme/neo.css">
+	<link rel="stylesheet" href="./css/theme/night.css">
+	<link rel="stylesheet" href="./css/theme/paraiso-dark.css">
+	<link rel="stylesheet" href="./css/theme/paraiso-light.css">
+	<link rel="stylesheet" href="./css/theme/pastel-on-dark.css">
+	<link rel="stylesheet" href="./css/theme/rubyblue.css">
+	<link rel="stylesheet" href="./css/theme/solarized.css">
+	<link rel="stylesheet" href="./css/theme/the-matrix.css">
+	<link rel="stylesheet" href="./css/theme/tomorrow-night-bright.css">
+	<link rel="stylesheet" href="./css/theme/tomorrow-night-eighties.css">
+	<link rel="stylesheet" href="./css/theme/twilight.css">
+	<link rel="stylesheet" href="./css/theme/vibrant-ink.css">
+	<link rel="stylesheet" href="./css/theme/xq-dark.css">
+	<link rel="stylesheet" href="./css/theme/xq-light.css">
+	<link rel="stylesheet" href="./css/theme/zenburn.css">
       <style type="text/css">
-         html {
+		pre {
+		 white-space: pre-wrap;       /* css-3 */
+		 white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+		 white-space: -pre-wrap;      /* Opera 4-6 */
+		 white-space: -o-pre-wrap;    /* Opera 7 */
+		 word-wrap: break-word;       /* Internet Explorer 5.5+ */
+		}
+		 html {
          font-size: 62.5%;
          }
          body {
@@ -107,48 +151,43 @@
             </br>
             <div class="col-xs-12" style="text-align:center">
                <a id="prev-style" href="#">Prev</a>
-               <select id="theme_select">
-                  <option>acid</option>
-                  <option>berries-dark</option>
-                  <option>berries-light</option>
-                  <option>bipolar</option>
-                  <option>blacknblue</option>
-                  <option>bright</option>
-                  <option>contrast</option>
-                  <option>darkblue</option>
-                  <option>darkness</option>
-                  <option>desert</option>
-                  <option>dull</option>
-                  <option>easter</option>
-                  <option>emacs</option>
-                  <option>golden</option>
-                  <option>greenlcd</option>
-                  <option>ide-anjuta</option>
-                  <option>ide-codewarrior</option>
-                  <option>ide-devcpp</option>
-                  <option>ide-eclipse</option>
-                  <option>ide-kdev</option>
-                  <option>ide-msvcpp</option>
-                  <option>kwrite</option>
-                  <option>matlab</option>
-                  <option>navy</option>
-                  <option>nedit</option>
-                  <option>neon</option>
-                  <option>night</option>
-                  <option>pablo</option>
-                  <option>peachpuff</option>
-                  <option>print</option>
-                  <option>rand01</option>
-                  <option>random</option>
-                  <option>the</option>
-                  <option>typical</option>
-                  <option>vampire</option>
-                  <option selected>vim</option>
-                  <option>vim-dark</option>
-                  <option>whatis</option>
-                  <option>whitengrey</option>
-                  <option>zellner</option>
-               </select>
+                <select id=theme_select>
+					<option selected>default</option>
+					<option>3024-day</option>
+					<option>3024-night</option>
+					<option>ambiance</option>
+					<option>base16-dark</option>
+					<option>base16-light</option>
+					<option>blackboard</option>
+					<option>cobalt</option>
+					<option>colorforth</option>
+					<option>eclipse</option>
+					<option>elegant</option>
+					<option>erlang-dark</option>
+					<option>lesser-dark</option>
+					<option>liquibyte</option>
+					<option>mbo</option>
+					<option>mdn-like</option>
+					<option>midnight</option>
+					<option>monokai</option>
+					<option>neat</option>
+					<option>neo</option>
+					<option>night</option>
+					<option>paraiso-dark</option>
+					<option>paraiso-light</option>
+					<option>pastel-on-dark</option>
+					<option>rubyblue</option>
+					<option>solarized dark</option>
+					<option>solarized light</option>
+					<option>the-matrix</option>
+					<option>tomorrow-night-bright</option>
+					<option>tomorrow-night-eighties</option>
+					<option>twilight</option>
+					<option>vibrant-ink</option>
+					<option>xq-dark</option>
+					<option>xq-light</option>
+					<option>zenburn</option>
+				</select>
                <a id="next-style" href="#">Next</a>
             </div>
             </br>
@@ -195,22 +234,26 @@
 		}
 
         function apply_theme_with_obj(id, obj, lang) {
-            //alert(JSON.stringify(obj));
 			obj = JSON.parse(obj);
             var theme = $('#theme_select').find(":selected").text();
-            $(id).snippet(lang,{ style:theme, menu:obj['menu'], transparent:obj['transparent'], collapse:obj['collapse'], startText:obj['startText'], showNum:obj['showNum'], startCollapsed:obj['startCollapsed'], showMsg:obj['showMsg'], hideMsg:obj['hideMsg'], clipboard:obj['clipboard'] });
+			var all = document.getElementsByClassName(id);
+			for ( i = 0; i < all.length; i++){
+				var text = all[i].parentNode.childNodes[1];
+				all[i].parentNode.removeChild(text); 
+				var editor = CodeMirror.fromTextArea(all[i], {});
+				editor.setOption("theme", theme);
+				editor.setOption("mode", lang);
+				editor.setSize('100%','100%');
+			}
         }
-         
 		var reader = new Reader();
 
 		var file;
 		var x = ''
 
 		function blocks() {
-
 			var blocks = JSON.parse(localStorage.getItem("file_contents"))
 			if (blocks != 'nothing') {
-				//alert(blocks)
 				var blockslen = blocks.length;
 				for (var i = 0; i < blockslen; i++) {
 					
@@ -250,67 +293,75 @@
 			var c = get_c_config();
 			var java = get_java_config();
 			var python = get_python_config();
-			apply_theme_with_obj('.indented_c',c,"c");
-			apply_theme_with_obj('.indented_java',java,"java");
-			apply_theme_with_obj('.indented_python',python,"python");
+			apply_theme_with_obj('indented_c',c,"clike");
+			apply_theme_with_obj('indented_java',java,"clike");
+			apply_theme_with_obj('indented_python',python,"python");
 		}
 		
 		function generatePara(text, i) {
 			$('#outer').append("<div id='text_div" + i + "'></div>");
-			$('#text_div' + i).html(text)
+			$('#text_div' + i).html("<p>"+text+"</p>");
 		}
 		
 		function generateCl(text, i) {
 			var temp = text.split("<pp_cl>")[1]
 			var link = temp.split("</pp_cl>")[0]
 			$('#outer').append("<div id='code_div" + i + "'></div>");
-			$('#code_div' + i).html("<pre class='indented_c' id='" + i + "'></pre>")
+			$('#code_div' + i).html("<textarea readonly style='overflow:hidden;resize:none;width:100%;'  class='indented_c' id='" + i + "'></textarea>")
 			var xhr = new XMLHttpRequest();
 			xhr.open("GET", "get_code.php?filename="+link, false);
 			xhr.send();
 			var obj = get_c_config();
 			$('#' + i).html(c_beautify(xhr.responseText,obj))
-			apply_theme_with_obj('#' + i, obj, "c");
+			resize(i,'clike',obj);			 
 		}
 		
 		function generateJaval(text, i) {
 			var temp = text.split("<pp_javal>")[1]
 			var link = temp.split("</pp_javal>")[0]
 			$('#outer').append("<div id='code_div" + i + "'></div>");
-			$('#code_div' + i).html("<pre class='indented_java' id='" + i + "'></pre>")
+			$('#code_div' + i).html("<textarea readonly style='overflow:hidden;resize:none;width:100%;' class='indented_java' id='" + i + "'></textarea>")
 			var xhr = new XMLHttpRequest();
 			xhr.open("GET", "get_code.php?filename="+link, false);
 			xhr.send();
 			var obj = get_java_config();
 			$('#' + i).html(java_beautify(xhr.responseText,obj))
-			apply_theme_with_obj('#' + i, obj, "java");
+			resize(i,'clike',obj);
 		}
 		
 		function generateC(text, i) {
 			var temp = text.split("<pp_c>")[1]
 			var link = temp.split("</pp_c>")[0]
 			$('#outer').append("<div id='code_div" + i + "'></div>");
-			$('#code_div' + i).html("<pre class='indented_c' id='" + i + "'></pre>")
+			$('#code_div' + i).html("<textarea readonly style='overflow:hidden;resize:none;width:100%;' class='indented_c' id='" + i + "'></textarea>")
 			var obj = get_c_config();
 			$('#' + i).html(c_beautify(link,obj))
-			apply_theme_with_obj('#' + i, obj, "c");
+			resize(i,'clike',obj);
 		}
-		
+		function resize(id,lang,obj) {
+			 var text = document.getElementById(id);
+			 text.style.height = 'auto';
+			 text.style.height = text.scrollHeight+'px';
+			var editor = CodeMirror.fromTextArea(text, {theme: 'default',
+														mode: lang,
+														lineWrapping: true});
+			editor.setSize('100%','100%');
+		}
 		function generateJava(text, i) {
 			var temp = text.split("<pp_java>")[1]
 			var link = temp.split("</pp_java>")[0]
 			$('#outer').append("<div id='code_div" + i + "'></div>");
-			$('#code_div' + i).html("<pre class='indented_java' id='" + i + "'></pre>")
+			$('#code_div' + i).html("<textarea readonly style='overflow:hidden;resize:none;width:100%;' class='indented_java' id='" + i + "'></textarea>")
 			var obj = get_java_config();
 			$('#' + i).html(java_beautify(link,obj))
-			apply_theme_with_obj('#' + i, obj, "java");
+			resize(i,'clike',obj);
 		}
 		
 		function generatePython(text, i) {
 			var temp = text.split("<pp_py>")[1]
 			var link = temp.split("</pp_py>")[0]
 			$('#outer').append("<div id='code_div" + i + "'></div>");
-			$('#code_div' + i).html("<pre class='indented_python' id='" + i + "'></pre>")
+			$('#code_div' + i).html("<textarea readonly style='overflow:hidden;resize:none;width:100%;' class='indented_python' id='" + i + "'></textarea>")
 			var xhr = new XMLHttpRequest();
 			var formData = new FormData();
 			formData.append("input", link);
@@ -320,7 +371,7 @@
 			xhr.send(formData);
 			$('#' + i).html(xhr.responseText)
 			var obj = get_python_config();
-			apply_theme_with_obj('#' + i, obj, "python");
+			resize(i,'python',obj);
 		}
 		
 		function generateImage(text, i) {
