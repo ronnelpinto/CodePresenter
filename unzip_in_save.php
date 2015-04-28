@@ -5,9 +5,13 @@
  * Unzip the tar file and display the contents in the data folder
  */
 
+ // The specific file to open passed as a string
+ $file_name = $_GET['filename']; 
+
+ 
 if ($handle = opendir('./save_folder/')) {
     while (false !== ($entry = readdir($handle))) {
-        if ($entry != "." && $entry != "..") {
+        if ($entry==$file_name) {
             echo "$entry\n";
 			$out_file_name = str_replace('.tar.gz', '', $entry);
 			
