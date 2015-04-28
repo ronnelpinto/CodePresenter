@@ -811,6 +811,16 @@
 				 localStorage.setItem("file_contents", JSON.stringify(blocks))
 			 }
 		 }
+		 
+		  function blocks1() {
+
+			 var blocks = reader.getBlocks();
+			 if (blocks != 'nothing') {
+				 clearInterval(t);
+				 localStorage.setItem("file_contents", JSON.stringify(blocks))
+				 window.location = "viewer.html"
+			 }
+		 }
 
 		 $('.test').click(function() {
 			if( flag == 1) {
@@ -844,11 +854,11 @@ $.ajax({
                 success: function(response){
                    
 					reader.readBook(response);
-					 t = setInterval(blocks, 500)
+					 t = setInterval(blocks1, 500)
 					}
                 
             });
-			window.location = "viewer.html"
+			
 })		 
       </script>
 	
