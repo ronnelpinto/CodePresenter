@@ -11,7 +11,6 @@ if ($handle = opendir('./data/')) {
 			
 			// if you want it to be in the new and old location use
 			//copy("./data/".$entry, "./save_folder/".$entry);
-
 		}
 		else{
 			//echo 'false';
