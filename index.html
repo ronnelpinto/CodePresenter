@@ -91,6 +91,10 @@
 		
 	</li>
 	<li>
+		<a href="#" id='open' style="margin-left:60px;">Open</a>
+	
+	</li>
+	<li>
 		<a href="#" id='aboutus' style="margin-left:60px;">About Us</a>
 	
 	</li>
@@ -112,8 +116,9 @@
             <form id="upload"  action="#" enctype="multipart/form-data" style="margin-top:200px" >
                <div id="drop">
                   Drop Here
-                  <a id="a" style="margin-top:30px">Browse</a>
+                  <a id="a" style="margin-top:60px">Browse</a>
                   <a class="test" >Upload</a>
+				  <a class="savingbutton" >Save</a>
                   <input type="file" name="fileupload1" id="fileupload1"/>
                </div>
                <ul id="ul">
@@ -587,6 +592,71 @@
             </form>
          </div>
       </div>
+	  <style>
+	  #select {
+    padding:3px;
+    margin: 0;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    background: #f8f8f8;
+    color:#888;
+    border:none;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+}
+
+/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    #select {padding-right:18px}
+}
+
+#label {position:relative}
+
+#label:after {
+    content:'<>';
+    font:11px "Consolas", monospace;
+    color:#aaa;
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg);
+    right:8px; top:2px;
+    padding:0 0 2px;
+    border-bottom:1px solid #ddd;
+    position:absolute;
+    pointer-events:none;
+}
+#label:before {
+    content:'';
+    right:6px; top:0px;
+    width:20px; height:20px;
+    background:#f8f8f8;
+    position:absolute;
+    pointer-events:none;
+    display:block;
+}
+	  </style>
+	  
+	  <div id="newone" style="display:none;text-align:center; margin-top:-350px">
+	  <label id="label">
+    <select id="select">
+        <option selected disabled> Select the file to render </option>
+        
+    </select>
+</label>
+ <div id="set">
+<div class="col-submit">
+                  <button class="submitbtn" id="render" style="min-width:10%">Render</button>
+               </div>
+	  </div></div>
       <script type="text/javascript">
          var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
@@ -650,6 +720,7 @@
 			 $('#site-content').show();
 			 $('#body').hide();
 			 $('#set').hide();
+			 $('#newone').hide();
 
 		 })
 
@@ -659,6 +730,7 @@
 			 $('#site-content').hide();
 			 $('#body').hide();
 			 $('#set').hide();
+			 $('#newone').hide();
 
 		 })
 
@@ -667,6 +739,8 @@
 			 $('#site-content').hide();
 			 $('#body').show();
 			 $('#set').hide();
+			 $('#newone').hide();
+			 
 
 		 })
 
@@ -675,6 +749,31 @@
 			 $('#site-content').hide();
 			 $('#body').hide();
 			 $('#set').show();
+			 $('#newone').hide();
+
+		 })
+		 
+		  $('#open').click(function() {
+			 $('#upload').hide();
+			 $('#site-content').hide();
+			 $('#body').hide();
+			 $('#set').hide();
+			 $('#newone').show();
+			 $.ajax({
+                type: "GET",
+                url: "read_directory.php",
+				async :false,
+                success: function(response){
+                    
+					var arr = response.split('\n')
+					arr.pop()
+					for(var i in arr){
+					var option = new Option(arr[i],arr[i]);
+					$('#select').append($(option));
+					}
+                }
+            });
+			 
 
 		 })
 		var flag= 0;
@@ -719,7 +818,38 @@
 			window.location = "viewer.html" }
 			else{
 			alert("Please upload the file");}
-		 })    
+		 })
+
+$('.savingbutton').click(function(){
+
+$.ajax({
+                type: "GET",
+                url: "move_to_save_dir.php",
+				async:false,
+                success: function(response){
+				
+                    if(response){
+					alert("File Saved");
+					}
+                }
+            });
+})		
+
+$('#render').click(function(){
+var filename = $('#select').val();
+$.ajax({
+                type: "GET",
+                url: "unzip_in_save.php?filename="+filename,
+				async:false,
+                success: function(response){
+                   
+					reader.readBook(response);
+					 t = setInterval(blocks, 500)
+					}
+                
+            });
+			window.location = "viewer.html"
+})		 
       </script>
 	
    </body>

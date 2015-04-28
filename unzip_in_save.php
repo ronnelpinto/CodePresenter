@@ -12,12 +12,12 @@
 if ($handle = opendir('./save_folder/')) {
     while (false !== ($entry = readdir($handle))) {
         if ($entry==$file_name) {
-            echo "$entry\n";
+            //echo "$entry\n";
 			$out_file_name = str_replace('.tar.gz', '', $entry);
 			
 			unlinkRecursive('./data/', false);
 
-			$phar          = new PharData("./data/" . $entry);
+			$phar          = new PharData("./save_folder/" . $entry);
 			$phar->extractTo('./data/' . $out_file_name);
 			//get the book file from the directory
 			$dir_path_for_bookfile = './data/' . $out_file_name;

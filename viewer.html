@@ -325,9 +325,32 @@
 		
 		function generateImage(text, i) {
 			var temp = text.split("<pp_img>")[1]
-			var link = temp.split("</pp_img>")[0]
-			$('#outer').append("<div id='img_div" + i + "'></div>");
-			$('#img_div' + i).html("<img src='getImage.php?file=" + link + "' style='max-width:100%;' width=400px height=400px>")
+			var arr = temp.split("</pp_img>")
+			var link = arr[0]
+			var title_tag = arr[1]
+			var title =false
+			if(title_tag.indexOf('title')!=-1){
+				title=true
+			var title = title_tag.split("=")[1]
+			title=title.split(">")[0]
+			var title_ele = "<p style='color:red;'>"+title+"<p>"
+			}
+			if(link.indexOf("<center>") !=-1){
+				link1 = link.split("<center>")[1]
+				$('#outer').append("<div id='img_div" + i + "' style='text-align:center'></div>");
+				$('#img_div' + i).html("<img src='getImage.php?file=" + link1 + "' style='max-width:100%;' width=400px ;height=400px;>")
+				if(title){
+					$('#img_div' + i).append($(title_ele));
+				}
+				}
+			else{
+				$('#outer').append("<div id='img_div" + i + "' ></div>");
+				$('#img_div' + i).html("<img src='getImage.php?file=" + link + "' style='max-width:100%;' width=400px height=400px>")
+				if(title){
+					$('#img_div' + i).append($(title_ele));
+				}
+				}
+			
 		}       
       </script>	
    </body>
