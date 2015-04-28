@@ -266,7 +266,7 @@
 			$('#outer').append("<div id='code_div" + i + "'></div>");
 			$('#code_div' + i).html("<pre class='indented_c' id='" + i + "'></pre>")
 			var xhr = new XMLHttpRequest();
-			xhr.open("GET", "http://localhost/pp/get_code.php?filename="+link, false);
+			xhr.open("GET", "get_code.php?filename="+link, false);
 			xhr.send();
 			var obj = get_c_config();
 			$('#' + i).html(c_beautify(xhr.responseText,obj))
@@ -279,7 +279,7 @@
 			$('#outer').append("<div id='code_div" + i + "'></div>");
 			$('#code_div' + i).html("<pre class='indented_java' id='" + i + "'></pre>")
 			var xhr = new XMLHttpRequest();
-			xhr.open("GET", "http://localhost/pp/get_code.php?filename="+link, false);
+			xhr.open("GET", "get_code.php?filename="+link, false);
 			xhr.send();
 			var obj = get_java_config();
 			$('#' + i).html(java_beautify(xhr.responseText,obj))
@@ -316,7 +316,7 @@
 			formData.append("input", link);
 			formData.append("indent-size", "5")
 			formData.append("max_line_length", "10")
-			xhr.open("POST", "http://localhost/pp/python_reindent.php", false);
+			xhr.open("POST", "python_reindent.php", false);
 			xhr.send(formData);
 			$('#' + i).html(xhr.responseText)
 			var obj = get_python_config();
