@@ -759,6 +759,11 @@
 			 $('#body').hide();
 			 $('#set').hide();
 			 $('#newone').show();
+			})
+			
+			
+			function get_saved_files(){
+			
 			 $.ajax({
                 type: "GET",
                 url: "read_directory.php",
@@ -773,13 +778,13 @@
 					}
                 }
             });
-			 
-
-		 })
+			
+			}
 		var flag= 0;
 		 function init() {
 		 
 			 $('#fileupload1').change(read_file);
+			 get_saved_files();
 			 save_c_config();
 			 save_java_config();
 			 save_python_config();
