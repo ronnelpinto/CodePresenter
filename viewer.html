@@ -243,6 +243,12 @@
 				var editor = CodeMirror.fromTextArea(all[i], {});
 				editor.setOption("theme", theme);
 				editor.setOption("mode", lang);
+				editor.setOption("readOnly", true);
+				editor.setOption("lineWrapping", obj['lineWrapping']);
+				editor.setOption("lineNumbers", obj['lineNumbers']);
+				editor.setOption("showCursorWhenSelecting", obj['showCursorWhenSelecting']);
+				editor.setOption("lineWiseCopyCut", obj['lineWiseCopyCut']);
+				editor.setOption("maxHighlightLength", obj['maxHighlightLength']);
 				editor.setSize('100%','100%');
 			}
         }
@@ -312,7 +318,7 @@
 			xhr.open("GET", "get_code.php?filename="+link, false);
 			xhr.send();
 			var obj = get_c_config();
-			$('#' + i).html(c_beautify(xhr.responseText,obj))
+			$('#' + i).html(c_beautify(xhr.responseText,JSON.parse(obj)))
 			resize(i,'clike',obj);			 
 		}
 		
@@ -325,7 +331,7 @@
 			xhr.open("GET", "get_code.php?filename="+link, false);
 			xhr.send();
 			var obj = get_java_config();
-			$('#' + i).html(java_beautify(xhr.responseText,obj))
+			$('#' + i).html(java_beautify(xhr.responseText,JSON.parse(obj)))
 			resize(i,'clike',obj);
 		}
 		
@@ -335,16 +341,22 @@
 			$('#outer').append("<div id='code_div" + i + "'></div>");
 			$('#code_div' + i).html("<textarea readonly style='overflow:hidden;resize:none;width:100%;' class='indented_c' id='" + i + "'></textarea>")
 			var obj = get_c_config();
-			$('#' + i).html(c_beautify(link,obj))
+			$('#' + i).html(c_beautify(link,JSON.parse(obj)))
 			resize(i,'clike',obj);
 		}
 		function resize(id,lang,obj) {
+			 obj = JSON.parse(obj);
 			 var text = document.getElementById(id);
 			 text.style.height = 'auto';
 			 text.style.height = text.scrollHeight+'px';
 			var editor = CodeMirror.fromTextArea(text, {theme: 'default',
-														mode: lang,
-														lineWrapping: true});
+														mode: lang});
+			editor.setOption("readOnly", true);
+			editor.setOption("lineWrapping", obj['lineWrapping']);
+			editor.setOption("lineNumbers", obj['lineNumbers']);
+			editor.setOption("showCursorWhenSelecting", obj['showCursorWhenSelecting']);
+			editor.setOption("lineWiseCopyCut", obj['lineWiseCopyCut']);
+			editor.setOption("maxHighlightLength", obj['maxHighlightLength']);
 			editor.setSize('100%','100%');
 		}
 		function generateJava(text, i) {
@@ -353,7 +365,7 @@
 			$('#outer').append("<div id='code_div" + i + "'></div>");
 			$('#code_div' + i).html("<textarea readonly style='overflow:hidden;resize:none;width:100%;' class='indented_java' id='" + i + "'></textarea>")
 			var obj = get_java_config();
-			$('#' + i).html(java_beautify(link,obj))
+			$('#' + i).html(java_beautify(link,JSON.parse(obj)))
 			resize(i,'clike',obj);
 		}
 		
@@ -365,12 +377,13 @@
 			var xhr = new XMLHttpRequest();
 			var formData = new FormData();
 			formData.append("input", link);
-			formData.append("indent-size", "5")
-			formData.append("max_line_length", "10")
+			var obj = get_python_config();
+			obj1 = JSON.parse(obj);
+			formData.append("indent-size", obj1['indent_size'])
+			formData.append("max_line_length", obj1['max-line-length'])
 			xhr.open("POST", "python_reindent.php", false);
 			xhr.send(formData);
-			$('#' + i).html(xhr.responseText)
-			var obj = get_python_config();
+			$('#' + i).html(xhr.responseText);
 			resize(i,'python',obj);
 		}
 		

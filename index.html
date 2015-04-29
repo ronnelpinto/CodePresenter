@@ -117,7 +117,7 @@
                <div id="drop">
                   Drop Here
                   <a id="a" style="margin-top:60px">Browse</a>
-                  <a class="test" >Upload</a>
+                  <a class="test" >Render</a>
 				  <a class="savingbutton" >Save</a>
                   <input type="file" name="fileupload1" id="fileupload1"/>
                </div>
@@ -320,79 +320,33 @@
                   <label>Space before function parameters??</label>
                   <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="space_after_anon_function"></center>
                </div>
-                
+                //from here
                 <div class="col-3">
-                    <label>Menu option required for code??</label>
-                    <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="menu">         
+                    <label>Line Wrapping</label>
+                    <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="lineWrapping">         
                     </center>
                 </div>
       
               <div class="col-3">
                 <label>Show line numbers??</label>
-                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="showNum">       </center>
-              </div>
-      
-              <div class="col-3">
-                <label>Collapse code?</label>
-                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="collapse"></center>
+                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="lineNumbers">       </center>
               </div>
 
               <div class="col-3">
-                <label>Show code as text?</label>
-                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="startText"></center>
+                <label>show Cursor When Selecting?</label>
+                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="showCursorWhenSelecting"></center>
               </div>
 
               <div class="col-3">
-                <label>Start code as collapsed?</label>
-                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="startCollapsed"></center>
+                <label>line Wise Copy Cut?</label>
+                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="lineWiseCopyCut"></center>
               </div>
 
               <div class="col-3">
-                <label>Transparent Background</label>
-                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="transparent"></center>
+                <label>max Highlight Length</label>
+                <center style="position:relative; margin-bottom:5px;"><input type="number" class="js-switch" name="maxHighlightLength" value=10000></center>
               </div>
-
-              <div class="col-3">
-                <label>
-                  Custom collapse code message
-                <input placeholder="What is the custom collapse code message" id="hideMsg" name="hideMsg" value="Collapse code">
-                </label>
-              </div>
-
-              <div class="col-3">
-                <label>
-                 Custom show code message
-                  <input placeholder="What is the custom show code message?" id="showMsg" name="showMsg" value="Expand code">
-                </label>
-              </div>
-
-            <!-- WONT WORK IF MORE THAN ONE CODE BLOCK, NEED TO CALL IT MULTIPLE TIMES AS THE LINE NUMBER IS SELECTED ONLY FOR THE FORST BLOCK  
-             <div class="col-3">
-                <label>Line number to highlight
-                <input placeholder="Line number to highlight" name="box">
-                </label>
-              </div>
-
-
-            <div class="col-3">
-                <label>Box border color
-                <input placeholder="Box border color" name="boxColor">
-                </label>
-              </div>
-
-            <div class="col-3">
-                <label>Box fill color
-                <input placeholder="Box fill color" name="boxFill">
-                </label>
-              </div>
-
-            -->
-  
-              <div class="col-3">
-                <label>Clipboard path to copy text
-                <input placeholder="complete Clipboard path to copy text" name="clipboard">
-                </label>
-              </div>
+//till here
                 
                <div class="col-submit">
                   <button class="submitbtn" id="c_submit">Submit</button>
@@ -428,79 +382,33 @@
                   <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="space_after_anon_function"></center>
                </div>
                 
-                              <div class="col-3">
-                    <label>Menu option required for code??</label>
-                    <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="menu">         
+                //from here
+                <div class="col-3">
+                    <label>Line Wrapping</label>
+                    <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="lineWrapping">         
                     </center>
                 </div>
       
               <div class="col-3">
                 <label>Show line numbers??</label>
-                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="showNum">       </center>
-              </div>
-      
-              <div class="col-3">
-                <label>Collapse code?</label>
-                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="collapse"></center>
+                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="lineNumbers">       </center>
               </div>
 
               <div class="col-3">
-                <label>Show code as text?</label>
-                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="startText"></center>
+                <label>show Cursor When Selecting?</label>
+                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="showCursorWhenSelecting"></center>
               </div>
 
               <div class="col-3">
-                <label>Start code as collapsed?</label>
-                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="startCollapsed"></center>
+                <label>line Wise Copy Cut?</label>
+                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="lineWiseCopyCut"></center>
               </div>
 
               <div class="col-3">
-                <label>Transparent Background</label>
-                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="transparent"></center>
+                <label>max Highlight Length</label>
+                <center style="position:relative; margin-bottom:5px;"><input type="number" class="js-switch" name="maxHighlightLength" value=10000></center>
               </div>
-
-              <div class="col-3">
-                <label>
-                  Custom collapse code message
-                <input placeholder="What is the custom collapse code message" id="hideMsg" name="hideMsg" value="Collapse code">
-                </label>
-              </div>
-
-              <div class="col-3">
-                <label>
-                 Custom show code message
-                  <input placeholder="What is the custom show code message?" id="showMsg" name="showMsg" value="Expand code">
-                </label>
-              </div>
-
-            <!-- WONT WORK IF MORE THAN ONE CODE BLOCK, NEED TO CALL IT MULTIPLE TIMES AS THE LINE NUMBER IS SELECTED ONLY FOR THE FORST BLOCK  
-             <div class="col-3">
-                <label>Line number to highlight
-                <input placeholder="Line number to highlight" name="box">
-                </label>
-              </div>
-
-
-            <div class="col-3">
-                <label>Box border color
-                <input placeholder="Box border color" name="boxColor">
-                </label>
-              </div>
-
-            <div class="col-3">
-                <label>Box fill color
-                <input placeholder="Box fill color" name="boxFill">
-                </label>
-              </div>
-
-            -->
-  
-              <div class="col-3">
-                <label>Clipboard path to copy text
-                <input placeholder="complete Clipboard path to copy text" name="clipboard">
-                </label>
-              </div>
-                
+//till here
                <div class="col-submit">
                   <button class="submitbtn" id="java_submit">Submit</button>
                </div>
@@ -513,79 +421,39 @@
                   </label>
                </div>
                 
-                              <div class="col-3">
-                    <label>Menu option required for code??</label>
-                    <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="menu">         
+				<div class="col-3">
+                    <label>Line length</label>
+                    <center style="position:relative; margin-bottom:5px;"><input type="number" class="js-switch" name="max-line-length" value=60>         
+                    </center>
+                </div>
+				
+                //from here
+                <div class="col-3">
+                    <label>Line Wrapping</label>
+                    <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="lineWrapping">         
                     </center>
                 </div>
       
               <div class="col-3">
                 <label>Show line numbers??</label>
-                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="showNum">       </center>
+                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="lineNumbers">       </center>
               </div>
       
               <div class="col-3">
-                <label>Collapse code?</label>
-                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="collapse"></center>
+                <label>show Cursor When Selecting?</label>
+                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="showCursorWhenSelecting"></center>
               </div>
 
               <div class="col-3">
-                <label>Show code as text?</label>
-                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="startText"></center>
+                <label>line Wise Copy Cut?</label>
+                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="lineWiseCopyCut"></center>
               </div>
 
               <div class="col-3">
-                <label>Start code as collapsed?</label>
-                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="startCollapsed"></center>
+                <label>max Highlight Length</label>
+                <center style="position:relative; margin-bottom:5px;"><input type="number" class="js-switch" name="maxHighlightLength" value=10000></center>
               </div>
-
-              <div class="col-3">
-                <label>Transparent Background</label>
-                <center style="position:relative; margin-bottom:5px;"><input type="checkbox" class="js-switch" name="transparent"></center>
-              </div>
-
-              <div class="col-3">
-                <label>
-                  Custom collapse code message
-                <input placeholder="What is the custom collapse code message" id="hideMsg" name="hideMsg" value="Collapse code">
-                </label>
-              </div>
-
-              <div class="col-3">
-                <label>
-                 Custom show code message
-                  <input placeholder="What is the custom show code message?" id="showMsg" name="showMsg" value="Expand code">
-                </label>
-              </div>
-
-            <!-- WONT WORK IF MORE THAN ONE CODE BLOCK, NEED TO CALL IT MULTIPLE TIMES AS THE LINE NUMBER IS SELECTED ONLY FOR THE FORST BLOCK  
-             <div class="col-3">
-                <label>Line number to highlight
-                <input placeholder="Line number to highlight" name="box">
-                </label>
-              </div>
-
-
-            <div class="col-3">
-                <label>Box border color
-                <input placeholder="Box border color" name="boxColor">
-                </label>
-              </div>
-
-            <div class="col-3">
-                <label>Box fill color
-                <input placeholder="Box fill color" name="boxFill">
-                </label>
-              </div>
-
-            -->
-  
-              <div class="col-3">
-                <label>Clipboard path to copy text
-                <input placeholder="complete Clipboard path to copy text" name="clipboard">
-                </label>
-              </div>
-                
+//till here
                <div class="col-submit">
                   <button class="submitbtn" id="python_submit">Submit</button>
                </div>

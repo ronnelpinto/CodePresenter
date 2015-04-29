@@ -2,6 +2,12 @@ Chapter 1 - A Tutorial Introduction
 Let us begin with a quick introduction in C. Our aim is to show the essential elements of the
 language in real programs, but without getting bogged down in details, rules, and exceptions.
 <pp_br>
+<pp_img>1_all/img/xyz.jpg</pp_img><title=I am the title for upper pic>
+<pp_br>
+Chapter 1 - A Tutorial Introduction
+Let us begin with a quick introduction in C. Our aim is to show the essential elements of the
+language in real programs, but without getting bogged down in details, rules, and exceptions.
+<pp_br>
 <pp_img>1_all/img/xyz.jpg</pp_img>
 <pp_br>
 At this point, we are not trying to be complete or even precise (save that the examples are
@@ -13,6 +19,16 @@ programs. These include pointers, structures, most of C's rich set of operators,
 statements, and the standard library.
 <pp_br>
 <pp_c>int main(){printf("why\n");}</pp_c>
+<pp_br>
+At this point, we are not trying to be complete or even precise (save that the examples are
+meant to be correct). We want to get you as quickly as possible to the point where you can
+write useful programs, and to do that we have to concentrate on the basics: variables and
+constants, arithmetic, control flow, functions, and the rudiments of input and output. We are
+intentionally leaving out of this chapter features of C that are important for writing bigger
+programs. These include pointers, structures, most of C's rich set of operators, several controlflow
+statements, and the standard library.
+<pp_br>
+<pp_img><center>1_all/img/xyz.jpg</pp_img><title=center title>
 <pp_br>
 At this point, we are not trying to be complete or even precise (save that the examples are
 meant to be correct). We want to get you as quickly as possible to the point where you can
