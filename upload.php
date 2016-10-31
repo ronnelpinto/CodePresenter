@@ -5,24 +5,11 @@ if (strpos($_FILES['file_input']['name'], '.tar.gz') !== false) {
 	//First delete all the contents in the 'data' folder
 	unlinkRecursive('./data/', false);
 	
-	//mkdir('./data/')
     //move file to server
     $ret = move_uploaded_file($_FILES['file_input']['tmp_name'], "./data/" . $_FILES['file_input']['name']);
     if ($ret != 0) {
         //echo "<h2>Successfully uploaded";
     }
-    
-    
-    foreach ($_FILES['file_input'] as $key2 => $value2) {
-        //echo "<h2>$key2............$value2</h2>";
-    }
-    
-    //decompress the tar file and store in the same folder
-    
-    // decompress from gz
-    //$p = new PharData('files.tar.gz');
-    //$p->decompress(); // creates files.tar
-    
     $out_file_name = str_replace('.tar.gz', '', $_FILES['file_input']['name']);
     $phar          = new PharData("./data/" . $_FILES['file_input']['name']);
     $phar->extractTo('./data/' . $out_file_name);
